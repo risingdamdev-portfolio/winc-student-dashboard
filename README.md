@@ -1,3 +1,3 @@
-# Winc Academy · Project Week 5: “Playlist”
+# Winc Academy · Project Week 6: “Student Dashboard”
 
 More details to follow...

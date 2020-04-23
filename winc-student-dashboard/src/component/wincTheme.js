@@ -9,7 +9,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -30,9 +30,9 @@ const wincTheme = {
             axisLabel: {
                 textAnchor: 'middle',
                 fontFamily: 'Poppins, sans-serif',
-                fontSize: 13,
+                fontSize: 8,
                 letterSpacing: 'normal',
-                padding: 8,
+                padding: 0,
                 fill: '#ccc',
                 stroke: 'transparent',
                 strokeWidth: 0
@@ -51,7 +51,7 @@ const wincTheme = {
             },
             tickLabels: {
                 fontFamily: 'Poppins, sans-serif',
-                fontSize: 12,
+                fontSize: 8,
                 letterSpacing: 'normal',
                 padding: 4,
                 fill: '#666',
@@ -66,29 +66,28 @@ const wincTheme = {
     bar: {
         style: {
             data: {
-                fill: '#4a90e2',
                 padding: 0,
                 strokeWidth: 0
             },
             labels: {
                 fontFamily: 'Poppins, sans-serif',
-                fontSize: 8,
+                fontSize: 9,
                 letterSpacing: 'normal',
-                padding: 8,
-                fill: '#455A64',
+                padding: 4,
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
         },
         width: 350,
         height: 350,
-        padding: 20
+        padding: 4
     },
     boxplot: {
         style: {
             max: {
                 padding: 8,
-                stroke: '#455A64',
+                stroke: '#666666',
                 strokeWidth: 1
             },
             maxLabels: {
@@ -96,13 +95,13 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             },
             median: {
                 padding: 8,
-                stroke: '#455A64',
+                stroke: '#666666',
                 strokeWidth: 1
             },
             medianLabels: {
@@ -110,13 +109,13 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             },
             min: {
                 padding: 8,
-                stroke: '#455A64',
+                stroke: '#666666',
                 strokeWidth: 1
             },
             minLabels: {
@@ -124,33 +123,33 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             },
             q1: {
                 padding: 8,
-                fill: '#455A64'
+                fill: '#666666'
             },
             q1Labels: {
                 fontFamily: 'Poppins, sans-serif',
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             },
             q3: {
                 padding: 8,
-                fill: '#455A64'
+                fill: '#666666'
             },
             q3Labels: {
                 fontFamily: 'Poppins, sans-serif',
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -163,21 +162,21 @@ const wincTheme = {
     candlestick: {
         style: {
             data: {
-                stroke: '#455A64'
+                stroke: '#666666'
             },
             labels: {
                 fontFamily: 'Poppins, sans-serif',
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
         },
         candleColors: {
             positive: '#ffffff',
-            negative: '#455A64'
+            negative: '#666666'
         },
         width: 350,
         height: 350,
@@ -194,7 +193,7 @@ const wincTheme = {
             data: {
                 fill: 'transparent',
                 opacity: 1,
-                stroke: '#455A64',
+                stroke: '#666666',
                 strokeWidth: 2
             },
             labels: {
@@ -202,7 +201,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -245,7 +244,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             },
@@ -254,7 +253,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 5,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -265,15 +264,15 @@ const wincTheme = {
             data: {
                 fill: 'transparent',
                 opacity: 1,
-                stroke: '#455A64',
-                strokeWidth: 2
+                stroke: '#666666',
+                strokeWidth: 3
             },
             labels: {
                 fontFamily: 'Poppins, sans-serif',
-                fontSize: 13,
+                fontSize: 9,
                 letterSpacing: 'normal',
-                padding: 8,
-                fill: '#455A64',
+                padding: 4,
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -302,7 +301,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 20,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -314,7 +313,7 @@ const wincTheme = {
     scatter: {
         style: {
             data: {
-                fill: '#455A64',
+                fill: '#666666',
                 opacity: 1,
                 stroke: 'transparent',
                 strokeWidth: 0
@@ -324,7 +323,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -352,7 +351,7 @@ const wincTheme = {
             fontSize: 12,
             letterSpacing: 'normal',
             padding: 5,
-            fill: '#455A64',
+            fill: '#666666',
             stroke: 'transparent',
             strokeWidth: 0,
             pointerEvents: 'none'
@@ -378,7 +377,7 @@ const wincTheme = {
                 fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 5,
-                fill: '#455A64',
+                fill: '#666666',
                 stroke: 'transparent',
                 strokeWidth: 0,
                 pointerEvents: 'none'

@@ -21,8 +21,7 @@ const TableView = props => {
         student = studentNames.find(student => {
             return student.username === tableViewStudent.toLowerCase()
         })
-    }
-    if (params.username !== undefined) {
+    } else if (params.username !== undefined) {
         student = studentNames.find(student => {
             return student.username === params.username
         })

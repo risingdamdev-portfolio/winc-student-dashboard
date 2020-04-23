@@ -51,9 +51,9 @@ const Dashboard = props => {
                 <header>
                     <h1>{HOME_LABEL}</h1>
                 </header>
-                <figure>
-                    <Charts assignments={assignments} />
-                </figure>
+
+                <Charts assignments={assignments} />
+
                 <header>
                     <h1>{STUDENTS_LABEL}</h1>
                 </header>

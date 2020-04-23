@@ -122,7 +122,7 @@ main ul {
     list-style-type: none;
     display: flex;
     flex-flow: row wrap;
-    max-width: 1000px;
+    min-width: 800px;
 }
 
 main ul li {

@@ -108,10 +108,8 @@ class App extends React.Component {
 
             return {
                 assignment: a.assignment,
-                data: {
-                    difficultyRating: difficultyRating,
-                    enjoymentRating: enjoymentRating
-                }
+                difficultyRating: difficultyRating,
+                enjoymentRating: enjoymentRating
             }
         })
         return assignmentsWithData

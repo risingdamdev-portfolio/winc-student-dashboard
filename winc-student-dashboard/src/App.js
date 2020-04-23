@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import ChartExample from './components/ChartExample'
+import DashboardCharts from './components/DashboardCharts'
 import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from './Config'
 
 import Students from './data/students.json'
@@ -154,7 +154,7 @@ const StudentList = () => {
                     <h1>{HOME_LABEL}</h1>
                 </header>
                 <figure>
-                    <ChartExample />
+                    <DashboardCharts />
                 </figure>
                 <ul>{listElements}</ul>
             </main>

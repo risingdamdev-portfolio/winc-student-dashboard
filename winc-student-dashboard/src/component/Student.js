@@ -1,8 +1,8 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import Nav from './Nav'
 import Footer from './Footer'
-import {HOME_URL} from '../Config'
+import {HOME_URL, STORE_URL, STORE_LABEL} from '../Config'
 
 const Student = props => {
     const {username, id} = useParams()
@@ -29,6 +29,22 @@ const Student = props => {
     let keyID = 0
     let lastName = ''
 
+    let urlToStudent = ''
+    let urlToTable = ''
+    if (student !== undefined) {
+        urlToStudent = (
+            <li>
+                <a
+                    className='active'
+                    href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
+                >
+                    {student.name}
+                </a>
+            </li>
+        )
+        urlToTable = `${HOME_URL}${STORE_URL}/id/${student.id}/username/${student.username}`
+    }
+
     for (let [key, value] of Object.entries(studentData)) {
         keyID++
         const label = key.charAt(0).toUpperCase() + key.slice(1)
@@ -54,8 +70,7 @@ const Student = props => {
         } else if (key === 'avatar') {
             tableData.push(
                 <tr key={keyID}>
-                    <td>{label}</td>
-                    <td>
+                    <td colSpan='2' className='center'>
                         <img
                             className='avatar'
                             src={`/avatar/${value}`}
@@ -76,20 +91,6 @@ const Student = props => {
         }
     }
 
-    let urlToStudent = ''
-    if (student !== undefined) {
-        urlToStudent = (
-            <li>
-                <a
-                    className='active'
-                    href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
-                >
-                    {student.name}
-                </a>
-            </li>
-        )
-    }
-
     return (
         <React.Fragment>
             <Nav
@@ -107,6 +108,10 @@ const Student = props => {
                 <table>
                     <tbody>{tableData}</tbody>
                 </table>
+
+                <Link className='toTableview' to={urlToTable}>
+                    {STORE_LABEL}
+                </Link>
             </main>
             <Footer />
         </React.Fragment>

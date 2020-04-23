@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Students from '../data/students.json'
-import Metadata from '../data/metadata.json'
 
 const RenderTable = props => {
     let students = parseStudents()

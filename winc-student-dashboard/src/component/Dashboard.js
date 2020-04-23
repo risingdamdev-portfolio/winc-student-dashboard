@@ -23,14 +23,15 @@ const Dashboard = props => {
             let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
             return (
                 <li key={row.id}>
-                    <img
-                        className='avatar'
-                        src={`/avatar/${studentData.avatar}`}
-                        alt={row.name}
-                    />
-
-                    <Link to={url}>{row.name}</Link>
-
+                    <Link to={url}>
+                        <img
+                            className='avatar'
+                            src={`/avatar/${studentData.avatar}`}
+                            alt={row.name}
+                        />
+                        <br />
+                        {row.name} {studentData.name}
+                    </Link>
                     <Link to={urlToTable}>{STORE_LABEL}</Link>
                 </li>
             )
@@ -47,6 +48,9 @@ const Dashboard = props => {
                 <figure>
                     <DashboardCharts />
                 </figure>
+                <header>
+                    <h1>Students</h1>
+                </header>
                 <ul>{listElements}</ul>
             </main>
             <Footer />

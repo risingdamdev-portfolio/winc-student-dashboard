@@ -12,14 +12,12 @@ import wincTheme from './wincTheme'
 
 const StudentChart = props => {
     const {
-        handleCharts,
+        handleChartSwitches,
         difficultyRating,
         enjoymentRating,
         getAssignmentForStudent,
         username
     } = props
-
-    console.log(username)
 
     let chartData = getAssignmentForStudent({student: username})
 
@@ -36,14 +34,14 @@ const StudentChart = props => {
             <figure>
                 <button
                     className='difficultyRating'
-                    onClick={event => handleCharts(event, true)}
+                    onClick={event => handleChartSwitches(event, true)}
                 >
                     difficultyRating:{' '}
                     {difficultyRating ? <span>on</span> : <span>off</span>}
                 </button>
                 <button
                     className='enjoymentRating'
-                    onClick={event => handleCharts(event, false)}
+                    onClick={event => handleChartSwitches(event, false)}
                 >
                     enjoymentRating:{' '}
                     {enjoymentRating ? <span>on</span> : <span>off</span>}

@@ -1,4 +1,4 @@
-const sortColumn = (array, order, field) => {
+const Sort = (array, order, field) => {
     if (order) {
         return array.sort((a, b) => {
             if (a[field] < b[field]) {
@@ -19,4 +19,4 @@ const sortColumn = (array, order, field) => {
     })
 }
 
-export default sortColumn
+export default Sort

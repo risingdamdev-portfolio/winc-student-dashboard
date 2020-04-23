@@ -1,9 +1,9 @@
 import React from 'react'
 import {useParams, Link} from 'react-router-dom'
-import Nav from './Nav'
+import Nav from '../common/Nav'
 import StudentChart from './StudentChart'
-import Footer from './Footer'
-import {HOME_URL, STORE_URL, STORE_LABEL} from '../Config'
+import Footer from '../common/Footer'
+import {HOME_URL, STORE_URL, STORE_LABEL} from '../../Config'
 
 const Student = props => {
     const {username, id} = useParams()

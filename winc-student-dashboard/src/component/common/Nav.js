@@ -8,7 +8,7 @@ import {
     STORE_LABEL,
     LOGO_IMAGE,
     LOGO_ALT_TEXT
-} from '../Config'
+} from '../../Config'
 
 const Nav = props => {
     switch (props.nav) {

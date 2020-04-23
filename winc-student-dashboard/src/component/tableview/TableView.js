@@ -1,11 +1,11 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 
-import Nav from './Nav'
-import Footer from './Footer'
+import Nav from '../common/Nav'
+import Footer from '../common/Footer'
 import RenderTable from './RenderTable'
 
-import {HOME_URL, STORE_LABEL} from '../Config'
+import {HOME_URL, STORE_LABEL} from '../../Config'
 
 const TableView = props => {
     const params = useParams()

@@ -5,17 +5,21 @@ import {
     Route,
     Redirect
 } from 'react-router-dom'
-import Student from './component/Student'
-import Dashboard from './component/Dashboard'
-import TableView from './component/TableView'
+import Student from './component/student/Student'
+import Dashboard from './component/dashboard/Dashboard'
+import TableView from './component/tableview/TableView'
+
+import StudentData from './data/students.json'
+import Metadata from './data/metadata.json'
+
 import {HOME_URL, STORE_URL} from './Config'
 
 class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            students: [],
-            metadata: [],
+            students: StudentData,
+            metadata: Metadata,
             tableView: {
                 student: ''
             },
@@ -29,12 +33,12 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.getApiData('GET', '/students.json').then(data => {
-            this.setState({students: data})
-        })
-        this.getApiData('GET', '/metadata.json').then(data => {
-            this.setState({metadata: data})
-        })
+        // this.getApiData('GET', '/students.json').then(data => {
+        //     this.setState({students: data})
+        // })
+        // this.getApiData('GET', '/metadata.json').then(data => {
+        //     this.setState({metadata: data})
+        // })
     }
 
     async getApiData(method, api, body) {

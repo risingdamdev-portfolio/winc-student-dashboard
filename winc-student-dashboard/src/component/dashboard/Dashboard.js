@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import Nav from './Nav'
-import Charts from './Charts'
-import Footer from './Footer'
-import sortColumn from './SortColumn'
+import Nav from '../common/Nav'
+import DashboardCharts from './DashboardCharts'
+import Footer from '../common/Footer'
+import Sort from '../utility/Sort'
 
 import {
     HOME_URL,
@@ -12,7 +12,7 @@ import {
     STORE_URL,
     STORE_LABEL,
     STUDENTS_LABEL
-} from '../Config'
+} from '../../Config'
 
 const Dashboard = props => {
     const {
@@ -24,7 +24,7 @@ const Dashboard = props => {
         enjoymentRating
     } = props
 
-    let studentList = sortColumn(studentNames, true, 'username')
+    let studentList = Sort(studentNames, true, 'username')
 
     let listElements = []
     listElements = studentList.map(row => {
@@ -59,7 +59,7 @@ const Dashboard = props => {
                     <h1>{HOME_LABEL}</h1>
                 </header>
 
-                <Charts
+                <DashboardCharts
                     getAssignmentsAverage={getAssignmentsAverage}
                     handleChartSwitches={handleChartSwitches}
                     difficultyRating={difficultyRating}

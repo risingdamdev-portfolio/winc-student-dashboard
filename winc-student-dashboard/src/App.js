@@ -9,11 +9,12 @@ import {
 } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import ChartExample from './components/ChartExample'
 import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from './Config'
 
 // https://medium.com/officialrajdeepsingh/how-to-read-local-json-file-in-react-js-564125235fc7
-import students from './datastore/students.json'
-import metadata from './datastore/metadata.json'
+import Students from './data/students.json'
+import Metadata from './data/metadata.json'
 
 const App = () => {
     return (
@@ -164,7 +165,9 @@ const StudentList = () => {
                 <header>
                     <h1>{HOME_LABEL}</h1>
                 </header>
-
+                <figure>
+                    <ChartExample />
+                </figure>
                 <ul>{listElements}</ul>
             </main>
             <Footer />
@@ -178,7 +181,7 @@ const StudentList = () => {
 const parseStudents = () => {
     let studentNames = []
     let studentID = 1
-    students.forEach(row => {
+    Students.forEach(row => {
         if (
             studentNames.findIndex(index => index.username === row.username) ===
             -1
@@ -202,7 +205,7 @@ const parseStudents = () => {
 }
 
 const parseMetadata = () => {
-    return metadata
+    return Metadata
 }
 
 const DataTable = () => {

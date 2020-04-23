@@ -3,9 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    Redirect,
-    useParams
+    Redirect
 } from 'react-router-dom'
 import Student from './component/Student'
 import StudentList from './component/StudentList'
@@ -85,7 +83,10 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <Route exact path={HOME_URL}>
-                        <StudentList studentNames={studentNames} />
+                        <StudentList
+                            studentNames={studentNames}
+                            metadata={metadata}
+                        />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
                         <TableView studentNames={studentNames} />

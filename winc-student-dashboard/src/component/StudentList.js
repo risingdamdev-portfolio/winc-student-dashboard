@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-    useParams
-} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import Nav from './Nav'
 import DashboardCharts from './DashboardCharts'
@@ -16,20 +9,30 @@ import sortColumn from './SortColumn'
 import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from '../Config'
 
 const StudentList = props => {
-    const {studentNames} = props
+    const {studentNames, metadata} = props
 
     let studentList = sortColumn(studentNames, true, 'username')
 
     let listElements = []
     listElements = studentList.map(row => {
-        let url = `${HOME_URL}/id/${row.id}/username/${row.username}`
-        let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
-        return (
-            <li key={row.id}>
-                <Link to={url}>{row.name}</Link> (
-                <Link to={urlToTable}>Table</Link>)
-            </li>
-        )
+        let studentData = metadata.find(meta => {
+            return parseInt(meta.id) === row.id
+        })
+        if (studentData !== undefined) {
+            let url = `${HOME_URL}/id/${row.id}/username/${row.username}`
+            let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
+            return (
+                <li key={row.id}>
+                    <img
+                        className='avatar'
+                        src={`/avatar/${studentData.avatar}`}
+                        alt={row.name}
+                    />
+                    <Link to={url}>{row.name}</Link> (
+                    <Link to={urlToTable}>{STORE_LABEL}</Link>)
+                </li>
+            )
+        }
     })
 
     return (

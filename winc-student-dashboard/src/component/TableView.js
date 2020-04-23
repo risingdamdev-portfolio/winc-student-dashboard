@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-    useParams
-} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 import Nav from './Nav'
 import Footer from './Footer'

@@ -114,6 +114,16 @@ main a {
 
 main ul {
     list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 1000px;
+}
+
+main ul li {
+    width: 20%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
 }
 
 header {

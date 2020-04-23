@@ -8,7 +8,7 @@ import sortColumn from './SortColumn'
 
 import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from '../Config'
 
-const StudentList = props => {
+const Dashboard = props => {
     const {studentNames, metadata} = props
 
     let studentList = sortColumn(studentNames, true, 'username')
@@ -28,8 +28,10 @@ const StudentList = props => {
                         src={`/avatar/${studentData.avatar}`}
                         alt={row.name}
                     />
-                    <Link to={url}>{row.name}</Link> (
-                    <Link to={urlToTable}>{STORE_LABEL}</Link>)
+
+                    <Link to={url}>{row.name}</Link>
+
+                    <Link to={urlToTable}>{STORE_LABEL}</Link>
                 </li>
             )
         }
@@ -52,4 +54,4 @@ const StudentList = props => {
     )
 }
 
-export default StudentList
+export default Dashboard

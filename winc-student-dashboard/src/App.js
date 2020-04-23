@@ -6,7 +6,7 @@ import {
     Redirect
 } from 'react-router-dom'
 import Student from './component/Student'
-import StudentList from './component/StudentList'
+import Dashboard from './component/Dashboard'
 import TableView from './component/TableView'
 import {HOME_URL, STORE_URL} from './Config'
 
@@ -83,7 +83,7 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <Route exact path={HOME_URL}>
-                        <StudentList
+                        <Dashboard
                             studentNames={studentNames}
                             metadata={metadata}
                         />

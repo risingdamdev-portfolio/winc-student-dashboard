@@ -6,7 +6,8 @@ import {
     HOME_LABEL,
     STORE_URL,
     STORE_LABEL,
-    LOGO_IMAGE
+    LOGO_IMAGE,
+    LOGO_ALT_TEXT
 } from '../Config'
 
 const Nav = props => {
@@ -17,7 +18,7 @@ const Nav = props => {
                     <ul>
                         <li>
                             <Link to='/'>
-                                <img src={LOGO_IMAGE} />
+                                <img src={LOGO_IMAGE} alt={LOGO_ALT_TEXT} />
                             </Link>
                         </li>
                         <li>
@@ -41,7 +42,7 @@ const Nav = props => {
                     <ul>
                         <li>
                             <Link to='/'>
-                                <img src={LOGO_IMAGE} />
+                                <img src={LOGO_IMAGE} alt={LOGO_ALT_TEXT} />
                             </Link>
                         </li>
                         <li>
@@ -63,7 +64,7 @@ const Nav = props => {
                     <ul>
                         <li>
                             <Link to='/'>
-                                <img src={LOGO_IMAGE} />
+                                <img src={LOGO_IMAGE} alt={LOGO_ALT_TEXT} />
                             </Link>
                         </li>
                         <li>
@@ -88,7 +89,7 @@ const Nav = props => {
                     <ul>
                         <li>
                             <Link to='/'>
-                                <img src={LOGO_IMAGE} />
+                                <img src={LOGO_IMAGE} alt={LOGO_ALT_TEXT} />
                             </Link>
                         </li>
                         <li>

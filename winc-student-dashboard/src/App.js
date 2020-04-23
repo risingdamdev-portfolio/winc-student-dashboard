@@ -12,7 +12,6 @@ import Footer from './components/Footer'
 import ChartExample from './components/ChartExample'
 import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from './Config'
 
-// https://medium.com/officialrajdeepsingh/how-to-read-local-json-file-in-react-js-564125235fc7
 import Students from './data/students.json'
 import Metadata from './data/metadata.json'
 
@@ -53,9 +52,6 @@ const Student = () => {
     )
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-// https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
-
 const StudentDetails = props => {
     const {id} = props
 
@@ -67,14 +63,6 @@ const StudentDetails = props => {
     let studentData = metadata.find(row => {
         return student.id === parseInt(row.id)
     })
-
-    // const ordered = {}
-    // Object.keys(studentData)
-    //     .sort()
-    //     .forEach(function (key) {
-    //         ordered[key] = studentData[key]
-    //     })
-    // studentData = ordered
 
     let tableData = []
     let keyID = 0
@@ -175,9 +163,6 @@ const StudentList = () => {
     )
 }
 
-// https://stackoverflow.com/questions/8668174/indexof-method-in-an-object-array
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
-
 const parseStudents = () => {
     let studentNames = []
     let studentID = 1
@@ -262,26 +247,5 @@ const RenderTable = props => {
         </p>
     )
 }
-
-// const sortColumn = (array, order, field) => {
-//     if (order) {
-//         return array.sort((a, b) => {
-//             if (a[field] < b[field]) {
-//                 return 1
-//             } else if (a[field] > b[field]) {
-//                 return -1
-//             }
-//             return 0
-//         })
-//     }
-//     return array.sort((a, b) => {
-//         if (a[field] < b[field]) {
-//             return -1
-//         } else if (a[field] > b[field]) {
-//             return 1
-//         }
-//         return 0
-//     })
-// }
 
 export default App

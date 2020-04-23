@@ -18,9 +18,11 @@ class App extends React.Component {
             metadata: [],
             tableView: {
                 student: ''
-            }
+            },
+            charts: {difficultyRating: true, enjoymentRating: true}
         }
         this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
+        this.handleCharts = this.handleCharts.bind(this)
     }
 
     componentDidMount() {
@@ -124,6 +126,18 @@ class App extends React.Component {
         })
     }
 
+    handleCharts(event, ratingType) {
+        event.preventDefault()
+        this.setState(state => {
+            if (ratingType) {
+                state.charts.difficultyRating = !state.charts.difficultyRating
+            } else {
+                state.charts.enjoymentRating = !state.charts.enjoymentRating
+            }
+            return state
+        })
+    }
+
     render() {
         const studentNames = this.getStudentNames({
             students: this.state.students
@@ -136,6 +150,8 @@ class App extends React.Component {
         const assignments = this.getAssignments({
             students: this.state.students
         })
+        const difficultyRating = this.state.charts.difficultyRating
+        const enjoymentRating = this.state.charts.enjoymentRating
 
         return (
             <Router>
@@ -146,6 +162,9 @@ class App extends React.Component {
                             metadata={metadata}
                             students={students}
                             assignments={assignments}
+                            handleCharts={this.handleCharts}
+                            difficultyRating={difficultyRating}
+                            enjoymentRating={enjoymentRating}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>

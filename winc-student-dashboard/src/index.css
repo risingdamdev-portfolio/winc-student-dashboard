@@ -230,3 +230,41 @@ footer a:hover {
     border-collapse: collapse;
     margin-top: 3rem;
 }
+
+.difficultyRating,
+.enjoymentRating,
+.difficultyRating:visited,
+.enjoymentRating:visited {
+    appearance: none;
+    border: none;
+    background-color: #f2ba0d;
+    border-radius: 3px;
+    width: auto;
+    padding: 2px 0.5rem 2px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    margin: 0.5rem 0 0 0.5rem;
+    font-weight: 700;
+}
+
+.enjoymentRating {
+    background-color: #f27f0d;
+}
+
+.difficultyRating:hover,
+.enjoymentRating:hover {
+    text-decoration: underline;
+}
+
+.difficultyRating:focus,
+.enjoymentRating:focus {
+    outline: none;
+}
+
+.difficultyRating:active,
+.enjoymentRating:active {
+    position: relative;
+    top: 2px;
+}

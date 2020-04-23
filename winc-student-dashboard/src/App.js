@@ -7,10 +7,11 @@ import {
 } from 'react-router-dom'
 import Student from './component/student/Student'
 import Dashboard from './component/dashboard/Dashboard'
-import TableView from './component/tableview/TableView'
+import Tableview from './component/tableview/Tableview'
 
-import StudentData from './data/students.json'
-import Metadata from './data/metadata.json'
+// Use static files instead of getApiData for testing
+import studentData from './data/studentData.json'
+import metaData from './data/metaData.json'
 
 import {HOME_URL, STORE_URL} from './Config'
 
@@ -18,8 +19,8 @@ class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            students: StudentData,
-            metadata: Metadata,
+            studentData: studentData,
+            metaData: metaData,
             tableView: {
                 student: ''
             },
@@ -30,31 +31,34 @@ class App extends React.Component {
         this.getAssignmentForStudent = this.getAssignmentForStudent.bind(this)
         this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
         this.getAssignmentNames = this.getAssignmentNames.bind(this)
+        this.getStudentNames = this.getStudentNames.bind(this)
     }
 
     componentDidMount() {
-        // this.getApiData('GET', '/students.json').then(data => {
-        //     this.setState({students: data})
+        // Use static files instead of getApiData for testing
+        // this.getApiData('GET', '/studentData.json').then(data => {
+        //     this.setState({studentData: data})
         // })
-        // this.getApiData('GET', '/metadata.json').then(data => {
-        //     this.setState({metadata: data})
+        // this.getApiData('GET', '/metaData.json').then(data => {
+        //     this.setState({metaData: data})
         // })
     }
 
-    async getApiData(method, api, body) {
-        try {
-            let result = await fetch(api, {
-                method: method,
-                body: JSON.stringify(body)
-            })
-            return await result.json()
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // Use static files instead of getApiData for testing
+    // async getApiData(method, api, body) {
+    //     try {
+    //         let result = await fetch(api, {
+    //             method: method,
+    //             body: JSON.stringify(body)
+    //         })
+    //         return await result.json()
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
-    getStudentNames(props) {
-        const {students} = props
+    getStudentNames() {
+        const students = this.state.studentData
 
         let studentNames = []
         let studentID = 1
@@ -83,7 +87,7 @@ class App extends React.Component {
     }
 
     getAssignmentNames() {
-        const students = this.state.students
+        const students = this.state.studentData
         let assignments = []
         const map = new Map()
         for (const item of students) {
@@ -96,7 +100,7 @@ class App extends React.Component {
     }
 
     getAssignmentsAverage() {
-        const students = this.state.students
+        const students = this.state.studentData
         let assignments = this.getAssignmentNames()
 
         let assignmentsWithData = assignments.map(a => {
@@ -127,7 +131,7 @@ class App extends React.Component {
 
     getAssignmentForStudent(props) {
         const {student} = props
-        const students = this.state.students
+        const students = this.state.studentData
         let assignments = this.getAssignmentNames(students)
 
         let assignmentsWithData = assignments.map(a => {
@@ -168,12 +172,8 @@ class App extends React.Component {
     }
 
     render() {
-        const studentNames = this.getStudentNames({
-            students: this.state.students
-        })
-
-        const metadata = this.state.metadata
-        const students = this.state.students
+        const metadata = this.state.metaData
+        const students = this.state.studentData
         const tableViewStudent = this.state.tableView.student
         const difficultyRating = this.state.charts.difficultyRating
         const enjoymentRating = this.state.charts.enjoymentRating
@@ -183,7 +183,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path={HOME_URL}>
                         <Dashboard
-                            studentNames={studentNames}
+                            getStudentNames={this.getStudentNames}
                             metadata={metadata}
                             students={students}
                             getAssignmentsAverage={this.getAssignmentsAverage}
@@ -193,8 +193,8 @@ class App extends React.Component {
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
-                        <TableView
-                            studentNames={studentNames}
+                        <Tableview
+                            getStudentNames={this.getStudentNames}
                             students={students}
                             handleTableviewSelect={this.handleTableviewSelect}
                             tableViewStudent={tableViewStudent}
@@ -204,8 +204,8 @@ class App extends React.Component {
                         exact
                         path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
                     >
-                        <TableView
-                            studentNames={studentNames}
+                        <Tableview
+                            getStudentNames={this.getStudentNames}
                             students={students}
                             handleTableviewSelect={this.handleTableviewSelect}
                             tableViewStudent={tableViewStudent}
@@ -213,7 +213,7 @@ class App extends React.Component {
                     </Route>
                     <Route exact path={`${HOME_URL}/id/:id/username/:username`}>
                         <Student
-                            studentNames={studentNames}
+                            getStudentNames={this.getStudentNames}
                             metadata={metadata}
                             handleChartSwitches={this.handleChartSwitches}
                             getAssignmentForStudent={

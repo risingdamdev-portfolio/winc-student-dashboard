@@ -8,13 +8,15 @@ import {HOME_URL, STORE_URL, STORE_LABEL} from '../../Config'
 const Student = props => {
     const {username, id} = useParams()
     const {
-        studentNames,
+        getStudentNames,
         metadata,
         handleChartSwitches,
         getAssignmentForStudent,
         difficultyRating,
         enjoymentRating
     } = props
+
+    let studentNames = getStudentNames()
 
     if (studentNames === []) {
         return ''

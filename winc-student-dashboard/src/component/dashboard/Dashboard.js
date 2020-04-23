@@ -16,7 +16,7 @@ import {
 
 const Dashboard = props => {
     const {
-        studentNames,
+        getStudentNames,
         metadata,
         getAssignmentsAverage,
         handleChartSwitches,
@@ -24,7 +24,7 @@ const Dashboard = props => {
         enjoymentRating
     } = props
 
-    let studentList = Sort(studentNames, true, 'username')
+    let studentList = Sort(getStudentNames(), true, 'username')
 
     let listElements = []
     listElements = studentList.map(row => {

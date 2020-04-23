@@ -7,16 +7,17 @@ import RenderTable from './RenderTable'
 
 import {HOME_URL, STORE_LABEL} from '../../Config'
 
-const TableView = props => {
+const Tableview = props => {
     const params = useParams()
     const {
-        studentNames,
+        getStudentNames,
         students,
         handleTableviewSelect,
         tableViewStudent
     } = props
 
     let student = ''
+    let studentNames = getStudentNames()
     if (tableViewStudent !== '') {
         student = studentNames.find(student => {
             return student.username === tableViewStudent.toLowerCase()
@@ -65,4 +66,4 @@ const TableView = props => {
     )
 }
 
-export default TableView
+export default Tableview

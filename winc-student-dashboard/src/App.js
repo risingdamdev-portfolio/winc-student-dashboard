@@ -75,34 +75,46 @@ class App extends React.Component {
 
     getAssignments(props) {
         const {students} = props
-        const result = []
+        let assignments = []
         const map = new Map()
         for (const item of students) {
             if (!map.has(item.assignment)) {
                 map.set(item.assignment, true)
-                result.push({assignment: item.assignment})
+                assignments.push({assignment: item.assignment})
             }
         }
 
-        // let assignments = result.forEach(assignment => {
-        //     let result = students.filter(row => {
-        //         return row.assignment === assignment.assignment
-        //     })
-        //     return result
-        // })
+        let assignmentsWithData = assignments.map(a => {
+            let data = students.filter(s => {
+                return a.assignment === s.assignment
+            })
 
-        //console.log(result)
+            const count = data.length
 
-        // let total = 0
-        // result.forEach(result => {
-        //     total = total + parseInt(result.difficultyRating)
-        // })
+            let difficultyRating = data
+                .map(d => {
+                    return parseInt(d.difficultyRating)
+                })
+                .reduce((a, b) => a + b, 0)
 
-        //console.log(assignments)
-        return result
+            difficultyRating = Math.round(difficultyRating / count)
 
-        //difficultyRating
-        //enjoymentRating
+            let enjoymentRating = data
+                .map(e => {
+                    return parseInt(e.enjoymentRating)
+                })
+                .reduce((a, b) => a + b, 0)
+            enjoymentRating = Math.round(enjoymentRating / count)
+
+            return {
+                assignment: a.assignment,
+                data: {
+                    difficultyRating: difficultyRating,
+                    enjoymentRating: enjoymentRating
+                }
+            }
+        })
+        return assignmentsWithData
     }
 
     handleTableviewSelect(event) {

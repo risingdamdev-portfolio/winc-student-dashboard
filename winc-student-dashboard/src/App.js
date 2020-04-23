@@ -22,9 +22,10 @@ class App extends React.Component {
             charts: {difficultyRating: true, enjoymentRating: true}
         }
         this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
-        this.handleCharts = this.handleCharts.bind(this)
+        this.handleChartSwitches = this.handleChartSwitches.bind(this)
         this.getAssignmentForStudent = this.getAssignmentForStudent.bind(this)
         this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
+        this.getAssignmentNames = this.getAssignmentNames.bind(this)
     }
 
     componentDidMount() {
@@ -77,7 +78,7 @@ class App extends React.Component {
         })
     }
 
-    getAssignmentsAverage() {
+    getAssignmentNames() {
         const students = this.state.students
         let assignments = []
         const map = new Map()
@@ -87,6 +88,13 @@ class App extends React.Component {
                 assignments.push({assignment: item.assignment})
             }
         }
+        return assignments
+    }
+
+    getAssignmentsAverage() {
+        const students = this.state.students
+        let assignments = this.getAssignmentNames()
+
         let assignmentsWithData = assignments.map(a => {
             let data = students.filter(s => {
                 return a.assignment === s.assignment
@@ -116,14 +124,8 @@ class App extends React.Component {
     getAssignmentForStudent(props) {
         const {student} = props
         const students = this.state.students
-        let assignments = []
-        const map = new Map()
-        for (const item of students) {
-            if (!map.has(item.assignment)) {
-                map.set(item.assignment, true)
-                assignments.push({assignment: item.assignment})
-            }
-        }
+        let assignments = this.getAssignmentNames(students)
+
         let assignmentsWithData = assignments.map(a => {
             let data = students.filter(s => {
                 return (
@@ -149,7 +151,7 @@ class App extends React.Component {
         })
     }
 
-    handleCharts(event, ratingType) {
+    handleChartSwitches(event, ratingType) {
         event.preventDefault()
         this.setState(state => {
             if (ratingType) {
@@ -181,7 +183,7 @@ class App extends React.Component {
                             metadata={metadata}
                             students={students}
                             getAssignmentsAverage={this.getAssignmentsAverage}
-                            handleCharts={this.handleCharts}
+                            handleChartSwitches={this.handleChartSwitches}
                             difficultyRating={difficultyRating}
                             enjoymentRating={enjoymentRating}
                         />
@@ -209,7 +211,7 @@ class App extends React.Component {
                         <Student
                             studentNames={studentNames}
                             metadata={metadata}
-                            handleCharts={this.handleCharts}
+                            handleChartSwitches={this.handleChartSwitches}
                             getAssignmentForStudent={
                                 this.getAssignmentForStudent
                             }

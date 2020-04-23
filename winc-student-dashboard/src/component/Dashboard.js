@@ -19,7 +19,7 @@ const Dashboard = props => {
         studentNames,
         metadata,
         getAssignmentsAverage,
-        handleCharts,
+        handleChartSwitches,
         difficultyRating,
         enjoymentRating
     } = props
@@ -61,7 +61,7 @@ const Dashboard = props => {
 
                 <Charts
                     getAssignmentsAverage={getAssignmentsAverage}
-                    handleCharts={handleCharts}
+                    handleChartSwitches={handleChartSwitches}
                     difficultyRating={difficultyRating}
                     enjoymentRating={enjoymentRating}
                 />

@@ -10,7 +10,7 @@ const Student = props => {
     const {
         studentNames,
         metadata,
-        handleCharts,
+        handleChartSwitches,
         getAssignmentForStudent,
         difficultyRating,
         enjoymentRating
@@ -112,7 +112,7 @@ const Student = props => {
                     </h1>
                 </header>
                 <StudentChart
-                    handleCharts={handleCharts}
+                    handleChartSwitches={handleChartSwitches}
                     difficultyRating={difficultyRating}
                     enjoymentRating={enjoymentRating}
                     getAssignmentForStudent={getAssignmentForStudent}

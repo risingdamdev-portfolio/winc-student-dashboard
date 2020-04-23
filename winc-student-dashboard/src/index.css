@@ -152,7 +152,8 @@ main ul li a img {
 }
 
 main ul li a:last-of-type,
-.toTableview {
+.toTableview,
+.toTableview:visited {
     background-color: #f2ba0d;
     border-radius: 3px;
     width: auto;
@@ -170,10 +171,16 @@ main ul li a:last-of-type,
     margin-top: 1rem;
 }
 
+main ul li a:last-of-type:active,
+.toTableview:active {
+    position: relative;
+    top: 2px;
+}
+
 header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
+    display: grid;
+    justify-items: center;
+    margin-bottom: 2rem;
 }
 
 header h1 {

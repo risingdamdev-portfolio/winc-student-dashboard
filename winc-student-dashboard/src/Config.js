@@ -1,4 +1,4 @@
-import LOGO_IMAGE from './images/logo.png'
+import LOGO_IMAGE from './image/logo.png'
 
 const HOME_URL = '/dashboard/students'
 const HOME_LABEL = 'Dashboard'

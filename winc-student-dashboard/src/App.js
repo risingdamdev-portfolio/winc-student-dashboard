@@ -7,9 +7,9 @@ import {
     Redirect,
     useParams
 } from 'react-router-dom'
-import Student from './components/Student'
-import StudentList from './components/StudentList'
-import Tableview from './components/Tableview'
+import Student from './component/Student'
+import StudentList from './component/StudentList'
+import TableView from './component/TableView'
 import {HOME_URL, STORE_URL} from './Config'
 
 class App extends React.Component {
@@ -72,13 +72,12 @@ class App extends React.Component {
     }
 
     render() {
+        if (this.state.students === [] || this.state.metadata === []) {
+            return ''
+        }
         const studentNames = this.getStudentNames({
             students: this.state.students
         })
-
-        if (!this.state) {
-            return null
-        }
 
         return (
             <Router>
@@ -87,18 +86,20 @@ class App extends React.Component {
                         <StudentList studentNames={studentNames} />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
-                        <Tableview studentNames={studentNames} />
+                        <TableView studentNames={studentNames} />
                     </Route>
                     <Route
                         exact
                         path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
                     >
-                        <Tableview />
+                        <TableView studentNames={studentNames} />
                     </Route>
                     <Route exact path={`${HOME_URL}/id/:id/username/:username`}>
-                        <Student />
+                        <Student
+                            studentNames={studentNames}
+                            metadata={this.state.metadata}
+                        />
                     </Route>
-
                     <Redirect from='/' to={HOME_URL} />
                 </Switch>
             </Router>

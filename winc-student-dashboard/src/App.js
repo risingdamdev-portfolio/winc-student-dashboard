@@ -79,7 +79,6 @@ class App extends React.Component {
 
     getAssignmentsAverage() {
         const students = this.state.students
-
         let assignments = []
         const map = new Map()
         for (const item of students) {
@@ -88,29 +87,23 @@ class App extends React.Component {
                 assignments.push({assignment: item.assignment})
             }
         }
-
         let assignmentsWithData = assignments.map(a => {
             let data = students.filter(s => {
                 return a.assignment === s.assignment
             })
-
             const count = data.length
-
             let difficultyRating = data
                 .map(d => {
                     return parseInt(d.difficultyRating)
                 })
                 .reduce((a, b) => a + b, 0)
-
             difficultyRating = Math.round(difficultyRating / count)
-
             let enjoymentRating = data
                 .map(e => {
                     return parseInt(e.enjoymentRating)
                 })
                 .reduce((a, b) => a + b, 0)
             enjoymentRating = Math.round(enjoymentRating / count)
-
             return {
                 assignment: a.assignment,
                 difficultyRating: difficultyRating,

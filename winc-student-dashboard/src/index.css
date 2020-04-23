@@ -268,3 +268,10 @@ footer a:hover {
     position: relative;
     top: 2px;
 }
+
+.difficultyRating span,
+.enjoymentRating span {
+    font-size: inherit;
+    padding-left: 4px;
+    border-left: 2px solid hsla(0, 0%, 100%, 0.7);
+}

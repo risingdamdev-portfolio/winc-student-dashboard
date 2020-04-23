@@ -38,13 +38,15 @@ const StudentChart = props => {
                     className='difficultyRating'
                     onClick={event => handleCharts(event, true)}
                 >
-                    difficultyRating: {difficultyRating ? 'on' : 'off'}
+                    difficultyRating:{' '}
+                    {difficultyRating ? <span>on</span> : <span>off</span>}
                 </button>
                 <button
                     className='enjoymentRating'
                     onClick={event => handleCharts(event, false)}
                 >
-                    enjoymentRating: {enjoymentRating ? 'on' : 'off'}
+                    enjoymentRating:{' '}
+                    {enjoymentRating ? <span>on</span> : <span>off</span>}
                 </button>
                 <VictoryChart
                     domainPadding={6}

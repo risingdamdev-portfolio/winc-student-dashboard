@@ -116,13 +116,13 @@ main {
     color: #666;
     display: grid;
     justify-content: center;
+    min-width: 800px;
 }
 
 main ul {
     list-style-type: none;
     display: flex;
     flex-flow: row wrap;
-    min-width: 800px;
 }
 
 main ul li {

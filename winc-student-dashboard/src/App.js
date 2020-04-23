@@ -69,15 +69,21 @@ class App extends React.Component {
         })
     }
 
+    getAssignments(props) {
+        const {students} = props
+    }
+
     render() {
-        if (this.state.students === [] || this.state.metadata === []) {
-            return ''
-        }
         const studentNames = this.getStudentNames({
             students: this.state.students
         })
 
         const metadata = this.state.metadata
+        const students = this.state.students
+
+        const assignments = this.getAssignments({
+            students: this.state.students
+        })
 
         return (
             <Router>
@@ -86,6 +92,7 @@ class App extends React.Component {
                         <Dashboard
                             studentNames={studentNames}
                             metadata={metadata}
+                            students={students}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>

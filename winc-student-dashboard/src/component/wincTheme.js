@@ -1,13 +1,3 @@
-import React from 'react'
-import {
-    VictoryBar,
-    VictoryChart,
-    VictoryAxis,
-    VictoryTooltip,
-    VictoryLine,
-    VictoryGroup
-} from 'victory'
-
 const wincTheme = {
     area: {
         style: {
@@ -15,8 +5,8 @@ const wincTheme = {
                 fill: '#212121'
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -32,18 +22,18 @@ const wincTheme = {
         style: {
             axis: {
                 fill: 'transparent',
-                stroke: '#90A4AE',
-                strokeWidth: 2,
+                stroke: '#ccc',
+                strokeWidth: 1,
                 strokeLinecap: 'round',
                 strokeLinejoin: 'round'
             },
             axisLabel: {
                 textAnchor: 'middle',
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
-                fill: '#455A64',
+                fill: '#ccc',
                 stroke: 'transparent',
                 strokeWidth: 0
             },
@@ -54,17 +44,17 @@ const wincTheme = {
             ticks: {
                 fill: 'transparent',
                 size: 5,
-                stroke: '#90A4AE',
+                stroke: '#ccc',
                 strokeWidth: 1,
                 strokeLinecap: 'round',
                 strokeLinejoin: 'round'
             },
             tickLabels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: 12,
                 letterSpacing: 'normal',
-                padding: 8,
-                fill: '#455A64',
+                padding: 4,
+                fill: '#666',
                 stroke: 'transparent',
                 strokeWidth: 0
             }
@@ -81,7 +71,7 @@ const wincTheme = {
                 strokeWidth: 0
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: 8,
                 letterSpacing: 'normal',
                 padding: 8,
@@ -102,8 +92,8 @@ const wincTheme = {
                 strokeWidth: 1
             },
             maxLabels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -116,8 +106,8 @@ const wincTheme = {
                 strokeWidth: 1
             },
             medianLabels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -130,8 +120,8 @@ const wincTheme = {
                 strokeWidth: 1
             },
             minLabels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -143,8 +133,8 @@ const wincTheme = {
                 fill: '#455A64'
             },
             q1Labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -156,8 +146,8 @@ const wincTheme = {
                 fill: '#455A64'
             },
             q3Labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -176,8 +166,8 @@ const wincTheme = {
                 stroke: '#455A64'
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -208,8 +198,8 @@ const wincTheme = {
                 strokeWidth: 2
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -251,8 +241,8 @@ const wincTheme = {
                 type: 'circle'
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -260,8 +250,8 @@ const wincTheme = {
                 strokeWidth: 0
             },
             title: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 5,
                 fill: '#455A64',
@@ -279,8 +269,8 @@ const wincTheme = {
                 strokeWidth: 2
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -303,13 +293,13 @@ const wincTheme = {
         ],
         style: {
             data: {
-                padding: 8,
+                padding: 4,
                 stroke: '#ECEFF1',
                 strokeWidth: 1
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 20,
                 fill: '#455A64',
@@ -330,8 +320,8 @@ const wincTheme = {
                 strokeWidth: 0
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 8,
                 fill: '#455A64',
@@ -358,7 +348,7 @@ const wincTheme = {
     },
     tooltip: {
         style: {
-            fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+            fontFamily: 'Poppins, sans-serif',
             fontSize: 12,
             letterSpacing: 'normal',
             padding: 5,
@@ -384,8 +374,8 @@ const wincTheme = {
                 strokeWidth: 0
             },
             labels: {
-                fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 13,
                 letterSpacing: 'normal',
                 padding: 5,
                 fill: '#455A64',
@@ -406,104 +396,4 @@ const wincTheme = {
     }
 }
 
-const getRandomRating = () => Math.random() * 5
-
-let assignmentRatingAverage = [
-    {assignment: 'W1D1-2'},
-    {assignment: 'W1D1-1'},
-    {assignment: 'W1D1-3'},
-    {assignment: 'W1D2-1'},
-    {assignment: 'W1D2-2'},
-    {assignment: 'W1D3-1'},
-    {assignment: 'W1D3-1'},
-    {assignment: 'W1D3-2'},
-    {assignment: 'W1D3-3'},
-    {assignment: 'W1D3-4'},
-    {assignment: 'W1D3-5'},
-    {assignment: 'W1D3-6'}
-]
-
-assignmentRatingAverage = assignmentRatingAverage.map(avg => ({
-    assignment: avg.assignment,
-    difficultyRating: getRandomRating(),
-    enjoymentRating: getRandomRating()
-}))
-
-// Add label
-const assignmentRatingAverageWithLabels = assignmentRatingAverage.map(avg => ({
-    assignment: avg.assignment,
-    difficultyRating: avg.difficultyRating,
-    enjoymentRating: avg.enjoymentRating,
-    label: `Opdracht ${
-        avg.assignment
-    }, difficultyRating: ${avg.difficultyRating.toFixed(
-        1
-    )}, enjoymentRating: ${avg.enjoymentRating.toFixed(1)}`
-}))
-
-const DashboardCharts = () => (
-    <React.Fragment>
-        <VictoryChart domainPadding={15} theme={wincTheme}>
-            <VictoryGroup offset={20}>
-                <VictoryBar
-                    labelComponent={<VictoryTooltip />}
-                    data={assignmentRatingAverageWithLabels}
-                    x='assignment'
-                    y='difficultyRating'
-                    tickValues={[1, 2, 3, 4, 5]}
-                    tickFormat={assignmentRatingAverageWithLabels.map(
-                        avg => avg.assignment
-                    )}
-                />
-                <VictoryBar
-                    labelComponent={<VictoryTooltip />}
-                    data={assignmentRatingAverageWithLabels}
-                    x='assignment'
-                    y='enjoymentRating'
-                    tickValues={[1, 2, 3, 4, 5]}
-                    tickFormat={assignmentRatingAverageWithLabels.map(
-                        avg => avg.assignment
-                    )}
-                />
-            </VictoryGroup>
-            <VictoryAxis
-                // tickValues specifies both the number of ticks and where
-                // they are placed on the axis
-                tickValues={[1, 2, 3, 4, 5]}
-                tickFormat={assignmentRatingAverageWithLabels.map(
-                    avg => avg.assignment
-                )}
-            />
-            <VictoryAxis dependentAxis />
-        </VictoryChart>
-
-        {/* <VictoryChart domainPadding={15} theme={wincTheme}>
-            <VictoryLine
-                style={{
-                    data: {stroke: '#c43a31'},
-                    parent: {border: '1px solid #ccc'}
-                }}
-                data={assignmentRatingAverage}
-                x='assignment'
-                y='difficultyRating'
-            />
-            <VictoryLine
-                style={{
-                    data: {stroke: '#ff00ff'},
-                    parent: {border: '1px solid #ccc'}
-                }}
-                data={assignmentRatingAverage}
-                x='assignment'
-                y='enjoymentRating'
-            />
-            <VictoryAxis
-                // tickValues specifies both the number of ticks and where
-                // they are placed on the axis
-                tickValues={[1, 2, 3, 4, 5]}
-                tickFormat={assignmentRatingAverage.map(avg => avg.assignment)}
-            />
-            <VictoryAxis dependentAxis />
-        </VictoryChart> */}
-    </React.Fragment>
-)
-export default DashboardCharts
+export default wincTheme

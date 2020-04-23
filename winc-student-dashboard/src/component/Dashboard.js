@@ -2,14 +2,20 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import Nav from './Nav'
-import DashboardCharts from './DashboardCharts'
+import Charts from './Charts'
 import Footer from './Footer'
 import sortColumn from './SortColumn'
 
-import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from '../Config'
+import {
+    HOME_URL,
+    HOME_LABEL,
+    STORE_URL,
+    STORE_LABEL,
+    STUDENTS_LABEL
+} from '../Config'
 
 const Dashboard = props => {
-    const {studentNames, metadata} = props
+    const {studentNames, metadata, students} = props
 
     let studentList = sortColumn(studentNames, true, 'username')
 
@@ -46,10 +52,10 @@ const Dashboard = props => {
                     <h1>{HOME_LABEL}</h1>
                 </header>
                 <figure>
-                    <DashboardCharts />
+                    <Charts students={students} />
                 </figure>
                 <header>
-                    <h1>Students</h1>
+                    <h1>{STUDENTS_LABEL}</h1>
                 </header>
                 <ul>{listElements}</ul>
             </main>

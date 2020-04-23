@@ -79,6 +79,8 @@ class App extends React.Component {
             students: this.state.students
         })
 
+        const metadata = this.state.metadata
+
         return (
             <Router>
                 <Switch>
@@ -97,7 +99,7 @@ class App extends React.Component {
                     <Route exact path={`${HOME_URL}/id/:id/username/:username`}>
                         <Student
                             studentNames={studentNames}
-                            metadata={this.state.metadata}
+                            metadata={metadata}
                         />
                     </Route>
                     <Redirect from='/' to={HOME_URL} />

@@ -16,8 +16,9 @@ import {HOME_URL, STORE_LABEL} from '../Config'
 
 const TableView = props => {
     const params = useParams()
+    const {studentNames} = props
 
-    let student = props.studentNames.find(student => {
+    let student = studentNames.find(student => {
         return student.username === params.username
     })
 
@@ -40,7 +41,7 @@ const TableView = props => {
                 <header>
                     <h1>{STORE_LABEL}</h1>
                 </header>
-                <RenderTable student={student} />
+                <RenderTable student={student} studentNames={studentNames} />
             </main>
             <Footer />
         </React.Fragment>

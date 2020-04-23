@@ -18,8 +18,7 @@ const Dashboard = props => {
     const {
         studentNames,
         metadata,
-        students,
-        assignments,
+        getAssignmentsAverage,
         handleCharts,
         difficultyRating,
         enjoymentRating
@@ -61,7 +60,7 @@ const Dashboard = props => {
                 </header>
 
                 <Charts
-                    assignments={assignments}
+                    getAssignmentsAverage={getAssignmentsAverage}
                     handleCharts={handleCharts}
                     difficultyRating={difficultyRating}
                     enjoymentRating={enjoymentRating}

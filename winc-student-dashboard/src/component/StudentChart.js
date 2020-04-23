@@ -5,21 +5,23 @@ import {
     VictoryAxis,
     VictoryTooltip,
     VictoryGroup,
-    VictoryLine,
     VictoryLabel
 } from 'victory'
 
 import wincTheme from './wincTheme'
 
-const Charts = props => {
+const StudentChart = props => {
     const {
-        getAssignmentsAverage,
         handleCharts,
         difficultyRating,
-        enjoymentRating
+        enjoymentRating,
+        getAssignmentForStudent,
+        username
     } = props
 
-    let chartData = getAssignmentsAverage()
+    console.log(username)
+
+    let chartData = getAssignmentForStudent({student: username})
 
     chartData = chartData.map(avg => ({
         assignment: avg.assignment,
@@ -85,48 +87,8 @@ const Charts = props => {
                     <VictoryAxis dependentAxis />
                 </VictoryChart>
             </figure>
-            <figure>
-                <VictoryChart
-                    domainPadding={6}
-                    theme={wincTheme}
-                    width={1200}
-                    height={400}
-                    padding={{top: 20, bottom: 120, left: 60, right: 100}}
-                >
-                    {difficultyRating ? (
-                        <VictoryLine
-                            style={{
-                                data: {stroke: '#f2ba0d'}
-                            }}
-                            labelComponent={<VictoryTooltip />}
-                            data={chartData}
-                            x='assignment'
-                            y='difficultyRating'
-                        />
-                    ) : null}
-                    {enjoymentRating ? (
-                        <VictoryLine
-                            style={{
-                                data: {stroke: '#F27F0D'}
-                            }}
-                            labelComponent={<VictoryTooltip />}
-                            data={chartData}
-                            x='assignment'
-                            y='enjoymentRating'
-                        />
-                    ) : null}
-                    <VictoryAxis
-                        tickValues={[1, 2, 3, 4, 5]}
-                        tickFormat={chartData.map(avg => avg.assignment)}
-                        tickLabelComponent={
-                            <VictoryLabel angle={40} textAnchor='start' />
-                        }
-                    />
-                    <VictoryAxis dependentAxis />
-                </VictoryChart>
-            </figure>
         </React.Fragment>
     )
 }
 
-export default Charts
+export default StudentChart

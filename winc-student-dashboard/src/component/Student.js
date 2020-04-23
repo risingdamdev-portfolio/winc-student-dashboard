@@ -1,12 +1,20 @@
 import React from 'react'
 import {useParams, Link} from 'react-router-dom'
 import Nav from './Nav'
+import StudentChart from './StudentChart'
 import Footer from './Footer'
 import {HOME_URL, STORE_URL, STORE_LABEL} from '../Config'
 
 const Student = props => {
     const {username, id} = useParams()
-    const {studentNames, metadata} = props
+    const {
+        studentNames,
+        metadata,
+        handleCharts,
+        getAssignmentForStudent,
+        difficultyRating,
+        enjoymentRating
+    } = props
 
     if (studentNames === []) {
         return ''
@@ -22,8 +30,6 @@ const Student = props => {
     if (studentData === undefined) {
         return ''
     }
-
-    console.log(username, studentData)
 
     let tableData = []
     let keyID = 0
@@ -105,6 +111,13 @@ const Student = props => {
                         {student.name} {lastName}
                     </h1>
                 </header>
+                <StudentChart
+                    handleCharts={handleCharts}
+                    difficultyRating={difficultyRating}
+                    enjoymentRating={enjoymentRating}
+                    getAssignmentForStudent={getAssignmentForStudent}
+                    username={username}
+                />
                 <table>
                     <tbody>{tableData}</tbody>
                 </table>

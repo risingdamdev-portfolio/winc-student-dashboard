@@ -23,6 +23,8 @@ class App extends React.Component {
         }
         this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
         this.handleCharts = this.handleCharts.bind(this)
+        this.getAssignmentForStudent = this.getAssignmentForStudent.bind(this)
+        this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
     }
 
     componentDidMount() {
@@ -75,8 +77,9 @@ class App extends React.Component {
         })
     }
 
-    getAssignments(props) {
-        const {students} = props
+    getAssignmentsAverage() {
+        const students = this.state.students
+
         let assignments = []
         const map = new Map()
         for (const item of students) {
@@ -117,6 +120,33 @@ class App extends React.Component {
         return assignmentsWithData
     }
 
+    getAssignmentForStudent(props) {
+        const {student} = props
+        const students = this.state.students
+        let assignments = []
+        const map = new Map()
+        for (const item of students) {
+            if (!map.has(item.assignment)) {
+                map.set(item.assignment, true)
+                assignments.push({assignment: item.assignment})
+            }
+        }
+        let assignmentsWithData = assignments.map(a => {
+            let data = students.filter(s => {
+                return (
+                    a.assignment === s.assignment &&
+                    student === s.username.toLowerCase()
+                )
+            })
+            return {
+                assignment: a.assignment,
+                difficultyRating: parseInt(data[0].difficultyRating),
+                enjoymentRating: parseInt(data[0].enjoymentRating)
+            }
+        })
+        return assignmentsWithData
+    }
+
     handleTableviewSelect(event) {
         event.preventDefault()
         const student = event.target.value
@@ -146,10 +176,6 @@ class App extends React.Component {
         const metadata = this.state.metadata
         const students = this.state.students
         const tableViewStudent = this.state.tableView.student
-
-        const assignments = this.getAssignments({
-            students: this.state.students
-        })
         const difficultyRating = this.state.charts.difficultyRating
         const enjoymentRating = this.state.charts.enjoymentRating
 
@@ -161,7 +187,7 @@ class App extends React.Component {
                             studentNames={studentNames}
                             metadata={metadata}
                             students={students}
-                            assignments={assignments}
+                            getAssignmentsAverage={this.getAssignmentsAverage}
                             handleCharts={this.handleCharts}
                             difficultyRating={difficultyRating}
                             enjoymentRating={enjoymentRating}
@@ -190,7 +216,12 @@ class App extends React.Component {
                         <Student
                             studentNames={studentNames}
                             metadata={metadata}
-                            students={students}
+                            handleCharts={this.handleCharts}
+                            getAssignmentForStudent={
+                                this.getAssignmentForStudent
+                            }
+                            difficultyRating={difficultyRating}
+                            enjoymentRating={enjoymentRating}
                         />
                     </Route>
                     <Redirect from='/' to={HOME_URL} />

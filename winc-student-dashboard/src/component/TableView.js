@@ -37,7 +37,7 @@ const TableView = props => {
     })
 
     let urlToStudent = ''
-    if (params.id !== undefined && student !== undefined) {
+    if (student.id !== undefined && student !== undefined) {
         urlToStudent = (
             <li>
                 <a

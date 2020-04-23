@@ -2,6 +2,7 @@ import React from 'react'
 import {useParams} from 'react-router-dom'
 import Nav from './Nav'
 import Footer from './Footer'
+import {HOME_URL} from '../Config'
 
 const Student = props => {
     const {username, id} = useParams()
@@ -75,9 +76,28 @@ const Student = props => {
         }
     }
 
+    let urlToStudent = ''
+    if (student !== undefined) {
+        urlToStudent = (
+            <li>
+                <a
+                    className='active'
+                    href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
+                >
+                    {student.name}
+                </a>
+            </li>
+        )
+    }
+
     return (
         <React.Fragment>
-            <Nav nav='Student' id={id} username={username} />
+            <Nav
+                nav='Student'
+                id={id}
+                username={username}
+                urlToStudent={urlToStudent}
+            />
             <main>
                 <header>
                     <h1>

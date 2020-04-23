@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import {
     HOME_URL,
@@ -68,9 +68,7 @@ const Nav = props => {
                             </Link>
                         </li>
                         <li>
-                            <Link className='active' to='/'>
-                                {HOME_LABEL}
-                            </Link>
+                            <Link to='/'>{HOME_LABEL}</Link>
                         </li>
                         <li>
                             <Link
@@ -79,6 +77,7 @@ const Nav = props => {
                                 {STORE_LABEL}
                             </Link>
                         </li>
+                        {props.urlToStudent}
                     </ul>
                 </nav>
             )

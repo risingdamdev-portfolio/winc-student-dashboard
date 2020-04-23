@@ -3,249 +3,225 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    Redirect,
-    useParams
+    Redirect
 } from 'react-router-dom'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import ChartExample from './components/ChartExample'
-import {HOME_URL, HOME_LABEL, STORE_URL, STORE_LABEL} from './Config'
+import Student from './component/Student'
+import Dashboard from './component/Dashboard'
+import TableView from './component/TableView'
+import {HOME_URL, STORE_URL} from './Config'
 
-import Students from './data/students.json'
-import Metadata from './data/metadata.json'
-
-const App = () => {
-    return (
-        <Router>
-            <Switch>
-                <Route exact path={HOME_URL} children={<StudentList />} />
-                <Route
-                    exact
-                    path={`${HOME_URL}${STORE_URL}`}
-                    children={<DataTable />}
-                />
-                <Route
-                    path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
-                    children={<DataTable />}
-                />
-                <Route
-                    path={`${HOME_URL}/id/:id/username/:username`}
-                    children={<Student />}
-                />
-
-                <Redirect from='/' to={HOME_URL} />
-            </Switch>
-        </Router>
-    )
-}
-
-const Student = () => {
-    const {username, id} = useParams()
-
-    return (
-        <React.Fragment>
-            <Nav nav='Student' id={id} username={username} />
-            <StudentDetails id={id} />
-            <Footer />
-        </React.Fragment>
-    )
-}
-
-const StudentDetails = props => {
-    const {id} = props
-
-    const students = parseStudents()
-    let student = students.find(student => {
-        return student.id === parseInt(id)
-    })
-    const metadata = parseMetadata()
-    let studentData = metadata.find(row => {
-        return student.id === parseInt(row.id)
-    })
-
-    let tableData = []
-    let keyID = 0
-    let lastName = ''
-    for (let [key, value] of Object.entries(studentData)) {
-        keyID++
-        const label = key.charAt(0).toUpperCase() + key.slice(1)
-        if (key === 'name') {
-            tableData.push(
-                <tr key={keyID}>
-                    <td>Name</td>
-                    <td>
-                        {student.name} {value}
-                    </td>
-                </tr>
-            )
-            lastName = value
-        } else if (key === 'email') {
-            tableData.push(
-                <tr key={keyID}>
-                    <td>{label}</td>
-                    <td>
-                        <a href={`mailto:${value}`}>{value}</a>
-                    </td>
-                </tr>
-            )
-        } else if (key === 'avatar') {
-            tableData.push(
-                <tr key={keyID}>
-                    <td>{label}</td>
-                    <td>
-                        <img
-                            className='avatar'
-                            src={value}
-                            width='80'
-                            height='80'
-                            alt={student.name}
-                        />
-                    </td>
-                </tr>
-            )
-        } else if (key !== 'id') {
-            tableData.push(
-                <tr key={keyID}>
-                    <td>{label}</td>
-                    <td>{value}</td>
-                </tr>
-            )
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            students: [],
+            metadata: [],
+            tableView: {
+                student: ''
+            },
+            charts: {difficultyRating: true, enjoymentRating: true}
         }
+        this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
+        this.handleCharts = this.handleCharts.bind(this)
+        this.getAssignmentForStudent = this.getAssignmentForStudent.bind(this)
+        this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
     }
 
-    return (
-        <main>
-            <header>
-                <h1>
-                    {student.name} {lastName}
-                </h1>
-            </header>
-            <table>
-                <tbody>{tableData}</tbody>
-            </table>
-        </main>
-    )
-}
+    componentDidMount() {
+        this.getApiData('GET', '/students.json').then(data => {
+            this.setState({students: data})
+        })
+        this.getApiData('GET', '/metadata.json').then(data => {
+            this.setState({metadata: data})
+        })
+    }
 
-const StudentList = () => {
-    const studentList = parseStudents()
-    let listElements = []
-    listElements = studentList.map(row => {
-        let url = `${HOME_URL}/id/${
-            row.id
-        }/username/${row.username.toLowerCase()}`
-        let urlToTable = `${HOME_URL}${STORE_URL}/id/${
-            row.id
-        }/username/${row.username.toLowerCase()}`
-        return (
-            <li key={row.id}>
-                <Link to={url}>{row.name}</Link> (
-                <Link to={urlToTable}>Table</Link>)
-            </li>
-        )
-    })
-
-    return (
-        <React.Fragment>
-            <Nav nav='StudentList' />
-            <main>
-                <header>
-                    <h1>{HOME_LABEL}</h1>
-                </header>
-                <figure>
-                    <ChartExample />
-                </figure>
-                <ul>{listElements}</ul>
-            </main>
-            <Footer />
-        </React.Fragment>
-    )
-}
-
-const parseStudents = () => {
-    let studentNames = []
-    let studentID = 1
-    Students.forEach(row => {
-        if (
-            studentNames.findIndex(index => index.username === row.username) ===
-            -1
-        ) {
-            studentNames.push({
-                id: studentID,
-                name: row.username,
-                username: row.username
+    async getApiData(method, api, body) {
+        try {
+            let result = await fetch(api, {
+                method: method,
+                body: JSON.stringify(body)
             })
-            studentID++
+            return await result.json()
+        } catch (error) {
+            console.log(error)
         }
-    })
+    }
 
-    return studentNames.map(row => {
-        return {
-            id: row.id,
-            name: row.name,
-            username: row.username.toLowerCase()
+    getStudentNames(props) {
+        const {students} = props
+
+        let studentNames = []
+        let studentID = 1
+        students.forEach(row => {
+            if (
+                studentNames.findIndex(
+                    index => index.username === row.username
+                ) === -1
+            ) {
+                studentNames.push({
+                    id: studentID,
+                    name: row.username,
+                    username: row.username
+                })
+                studentID++
+            }
+        })
+
+        return studentNames.map(row => {
+            return {
+                id: row.id,
+                name: row.name,
+                username: row.username.toLowerCase()
+            }
+        })
+    }
+
+    getAssignmentsAverage() {
+        const students = this.state.students
+        let assignments = []
+        const map = new Map()
+        for (const item of students) {
+            if (!map.has(item.assignment)) {
+                map.set(item.assignment, true)
+                assignments.push({assignment: item.assignment})
+            }
         }
-    })
-}
+        let assignmentsWithData = assignments.map(a => {
+            let data = students.filter(s => {
+                return a.assignment === s.assignment
+            })
+            const count = data.length
+            let difficultyRating = data
+                .map(d => {
+                    return parseInt(d.difficultyRating)
+                })
+                .reduce((a, b) => a + b, 0)
+            difficultyRating = Math.round(difficultyRating / count)
+            let enjoymentRating = data
+                .map(e => {
+                    return parseInt(e.enjoymentRating)
+                })
+                .reduce((a, b) => a + b, 0)
+            enjoymentRating = Math.round(enjoymentRating / count)
+            return {
+                assignment: a.assignment,
+                difficultyRating: difficultyRating,
+                enjoymentRating: enjoymentRating
+            }
+        })
+        return assignmentsWithData
+    }
 
-const parseMetadata = () => {
-    return Metadata
-}
+    getAssignmentForStudent(props) {
+        const {student} = props
+        const students = this.state.students
+        let assignments = []
+        const map = new Map()
+        for (const item of students) {
+            if (!map.has(item.assignment)) {
+                map.set(item.assignment, true)
+                assignments.push({assignment: item.assignment})
+            }
+        }
+        let assignmentsWithData = assignments.map(a => {
+            let data = students.filter(s => {
+                return (
+                    a.assignment === s.assignment &&
+                    student === s.username.toLowerCase()
+                )
+            })
+            return {
+                assignment: a.assignment,
+                difficultyRating: parseInt(data[0].difficultyRating),
+                enjoymentRating: parseInt(data[0].enjoymentRating)
+            }
+        })
+        return assignmentsWithData
+    }
 
-const DataTable = () => {
-    const params = useParams()
-    const students = parseStudents()
-    let student = students.find(student => {
-        return student.username === params.username
-    })
+    handleTableviewSelect(event) {
+        event.preventDefault()
+        const student = event.target.value
+        this.setState(state => {
+            state.tableView.student = student
+            return state
+        })
+    }
 
-    let urlToStudent = ''
-    if (params.id !== undefined && student !== undefined) {
-        urlToStudent = (
-            <li>
-                <Link
-                    to={`${HOME_URL}/id/${params.id}/username/${params.username}`}
-                >
-                    {student.name}
-                </Link>
-            </li>
+    handleCharts(event, ratingType) {
+        event.preventDefault()
+        this.setState(state => {
+            if (ratingType) {
+                state.charts.difficultyRating = !state.charts.difficultyRating
+            } else {
+                state.charts.enjoymentRating = !state.charts.enjoymentRating
+            }
+            return state
+        })
+    }
+
+    render() {
+        const studentNames = this.getStudentNames({
+            students: this.state.students
+        })
+
+        const metadata = this.state.metadata
+        const students = this.state.students
+        const tableViewStudent = this.state.tableView.student
+        const difficultyRating = this.state.charts.difficultyRating
+        const enjoymentRating = this.state.charts.enjoymentRating
+
+        return (
+            <Router>
+                <Switch>
+                    <Route exact path={HOME_URL}>
+                        <Dashboard
+                            studentNames={studentNames}
+                            metadata={metadata}
+                            students={students}
+                            getAssignmentsAverage={this.getAssignmentsAverage}
+                            handleCharts={this.handleCharts}
+                            difficultyRating={difficultyRating}
+                            enjoymentRating={enjoymentRating}
+                        />
+                    </Route>
+                    <Route exact path={`${HOME_URL}${STORE_URL}`}>
+                        <TableView
+                            studentNames={studentNames}
+                            students={students}
+                            handleTableviewSelect={this.handleTableviewSelect}
+                            tableViewStudent={tableViewStudent}
+                        />
+                    </Route>
+                    <Route
+                        exact
+                        path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
+                    >
+                        <TableView
+                            studentNames={studentNames}
+                            students={students}
+                            handleTableviewSelect={this.handleTableviewSelect}
+                            tableViewStudent={tableViewStudent}
+                        />
+                    </Route>
+                    <Route exact path={`${HOME_URL}/id/:id/username/:username`}>
+                        <Student
+                            studentNames={studentNames}
+                            metadata={metadata}
+                            handleCharts={this.handleCharts}
+                            getAssignmentForStudent={
+                                this.getAssignmentForStudent
+                            }
+                            difficultyRating={difficultyRating}
+                            enjoymentRating={enjoymentRating}
+                        />
+                    </Route>
+                    <Redirect from='/' to={HOME_URL} />
+                </Switch>
+            </Router>
         )
     }
-    return (
-        <React.Fragment>
-            <Nav nav='DataTable' urlToStudent={urlToStudent} />
-            <main>
-                <header>
-                    <h1>{STORE_LABEL}</h1>
-                </header>
-                <RenderTable student={student} />
-            </main>
-            <Footer />
-        </React.Fragment>
-    )
-}
-
-const RenderTable = props => {
-    let students = parseStudents()
-    let student = props.student
-    let currentUser = ''
-    const selectItems = students.map(row => {
-        if (student !== undefined && student.username === row.username) {
-            currentUser = row.username
-        }
-        return (
-            <option key={row.id} id={row.id} value={row.username}>
-                {row.name}
-            </option>
-        )
-    })
-    return (
-        <p>
-            Filter by student:{' '}
-            <select defaultValue={currentUser}>{selectItems}</select>
-        </p>
-    )
 }
 
 export default App

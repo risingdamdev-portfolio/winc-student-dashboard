@@ -22,6 +22,8 @@ const Student = props => {
         return ''
     }
 
+    console.log(username, studentData)
+
     let tableData = []
     let keyID = 0
     let lastName = ''

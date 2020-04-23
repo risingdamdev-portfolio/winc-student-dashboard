@@ -15,8 +15,12 @@ class App extends React.Component {
         super()
         this.state = {
             students: [],
-            metadata: []
+            metadata: [],
+            tableView: {
+                student: ''
+            }
         }
+        this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
     }
 
     componentDidMount() {
@@ -71,6 +75,43 @@ class App extends React.Component {
 
     getAssignments(props) {
         const {students} = props
+        const result = []
+        const map = new Map()
+        for (const item of students) {
+            if (!map.has(item.assignment)) {
+                map.set(item.assignment, true)
+                result.push({assignment: item.assignment})
+            }
+        }
+
+        // let assignments = result.forEach(assignment => {
+        //     let result = students.filter(row => {
+        //         return row.assignment === assignment.assignment
+        //     })
+        //     return result
+        // })
+
+        //console.log(result)
+
+        // let total = 0
+        // result.forEach(result => {
+        //     total = total + parseInt(result.difficultyRating)
+        // })
+
+        //console.log(assignments)
+        return result
+
+        //difficultyRating
+        //enjoymentRating
+    }
+
+    handleTableviewSelect(event) {
+        event.preventDefault()
+        const student = event.target.value
+        this.setState(state => {
+            state.tableView.student = student
+            return state
+        })
     }
 
     render() {
@@ -80,6 +121,7 @@ class App extends React.Component {
 
         const metadata = this.state.metadata
         const students = this.state.students
+        const tableViewStudent = this.state.tableView.student
 
         const assignments = this.getAssignments({
             students: this.state.students
@@ -93,21 +135,33 @@ class App extends React.Component {
                             studentNames={studentNames}
                             metadata={metadata}
                             students={students}
+                            assignments={assignments}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
-                        <TableView studentNames={studentNames} />
+                        <TableView
+                            studentNames={studentNames}
+                            students={students}
+                            handleTableviewSelect={this.handleTableviewSelect}
+                            tableViewStudent={tableViewStudent}
+                        />
                     </Route>
                     <Route
                         exact
                         path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
                     >
-                        <TableView studentNames={studentNames} />
+                        <TableView
+                            studentNames={studentNames}
+                            students={students}
+                            handleTableviewSelect={this.handleTableviewSelect}
+                            tableViewStudent={tableViewStudent}
+                        />
                     </Route>
                     <Route exact path={`${HOME_URL}/id/:id/username/:username`}>
                         <Student
                             studentNames={studentNames}
                             metadata={metadata}
+                            students={students}
                         />
                     </Route>
                     <Redirect from='/' to={HOME_URL} />

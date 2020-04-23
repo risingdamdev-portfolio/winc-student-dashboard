@@ -1,7 +1,7 @@
 import React from 'react'
 
 const RenderTable = props => {
-    let {student, studentNames} = props
+    let {student, studentNames, studentData, handleTableviewSelect} = props
 
     let currentUser = ''
     const selectItems = studentNames.map(row => {
@@ -14,11 +14,43 @@ const RenderTable = props => {
             </option>
         )
     })
+
+    let tableData = studentData.map((datapoint, index) => {
+        return (
+            <tr key={index}>
+                <td>{datapoint.username}</td>
+                <td>{datapoint.assignment}</td>
+                <td>{datapoint.difficultyRating}</td>
+                <td>{datapoint.enjoymentRating}</td>
+            </tr>
+        )
+    })
+
     return (
-        <p>
-            Filter by student:{' '}
-            <select defaultValue={currentUser}>{selectItems}</select>
-        </p>
+        <React.Fragment>
+            <p>
+                Filter by student:{' '}
+                <select
+                    onChange={event => handleTableviewSelect(event)}
+                    value={student.username}
+                >
+                    {selectItems}
+                </select>
+            </p>
+            <div className='tableview'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Assignment</th>
+                            <th>Difficulty</th>
+                            <th>Enjoyment</th>
+                        </tr>
+                    </thead>
+                    <tbody>{tableData}</tbody>
+                </table>
+            </div>
+        </React.Fragment>
     )
 }
 

@@ -15,7 +15,7 @@ import {
 } from '../Config'
 
 const Dashboard = props => {
-    const {studentNames, metadata, students} = props
+    const {studentNames, metadata, students, assignments} = props
 
     let studentList = sortColumn(studentNames, true, 'username')
 
@@ -52,7 +52,7 @@ const Dashboard = props => {
                     <h1>{HOME_LABEL}</h1>
                 </header>
                 <figure>
-                    <Charts students={students} />
+                    <Charts assignments={assignments} />
                 </figure>
                 <header>
                     <h1>{STUDENTS_LABEL}</h1>

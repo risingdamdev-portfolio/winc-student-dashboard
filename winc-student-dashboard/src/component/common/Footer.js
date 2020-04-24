@@ -4,7 +4,7 @@ import {WINC_URL, WINC_LABEL, DEV_URL, DEV_LABEL} from '../../Config'
 
 /**
  *
- *  Footer component with ‘Back to top’ link
+ *  Footer component
  *
  */
 
@@ -21,11 +21,6 @@ const Footer = () => {
                     {DEV_LABEL}
                 </Link>
                 , © 2020 in infinitum
-            </span>
-            <span>
-                <Link to='#top' alt={`Back to top`}>
-                    Back to top
-                </Link>
             </span>
         </footer>
     )

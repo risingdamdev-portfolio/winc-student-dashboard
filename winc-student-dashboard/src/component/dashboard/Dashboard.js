@@ -22,7 +22,9 @@ const Dashboard = props => {
         handleChartSwitches,
         difficultyRating,
         enjoymentRating,
-        chartType
+        chartType,
+        handleFilterDashboard,
+        getFilterState
     } = props
 
     let studentList = Sort(getStudentNames(), true, 'username')
@@ -32,24 +34,48 @@ const Dashboard = props => {
         let studentData = metadata.find(meta => {
             return parseInt(meta.id) === row.id
         })
-        if (studentData !== undefined) {
-            let url = `${HOME_URL}/id/${row.id}/username/${row.username}`
-            let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
-            return (
-                <li key={row.id}>
-                    <Link to={url}>
-                        <img
-                            className='avatar'
-                            src={`/avatar/${studentData.avatar}`}
-                            alt={row.name}
-                        />
-                        <br />
-                        {row.name} {studentData.name}
-                    </Link>
-                    <Link to={urlToTable}>{STORE_LABEL}</Link>
-                </li>
-            )
-        }
+
+        let url = `${HOME_URL}/id/${row.id}/username/${row.username}`
+        let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
+
+        const checkboxState = getFilterState(row.username)
+        const localCheckboxState = checkboxState[0]
+        const globalCheckboxState = checkboxState[1]
+
+        return (
+            <li
+                key={row.id}
+                className={
+                    localCheckboxState
+                        ? globalCheckboxState
+                            ? 'dimmed'
+                            : null
+                        : null
+                }
+            >
+                <button
+                    className={
+                        localCheckboxState ? 'checkBox' : 'checkBox gray'
+                    }
+                    onClick={event =>
+                        handleFilterDashboard(event, row.username)
+                    }
+                >
+                    filter{' '}
+                    {localCheckboxState ? <span>on</span> : <span>off</span>}
+                </button>
+                <Link to={url}>
+                    <img
+                        className='avatar'
+                        src={`/avatar/${studentData.avatar}`}
+                        alt={row.name}
+                    />
+                    <br />
+                    {row.name} {studentData.name}
+                </Link>
+                <Link to={urlToTable}>{STORE_LABEL}</Link>
+            </li>
+        )
     })
 
     return (

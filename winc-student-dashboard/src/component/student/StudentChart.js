@@ -34,18 +34,19 @@ const StudentChart = props => {
     return (
         <React.Fragment>
             <figure>
+                <h2>Student Rating</h2>
                 <button
                     className='difficultyRating'
                     onClick={event => handleChartSwitches(event, true)}
                 >
-                    difficultyRating:{' '}
+                    difficultyRating{' '}
                     {difficultyRating ? <span>on</span> : <span>off</span>}
                 </button>
                 <button
                     className='enjoymentRating'
                     onClick={event => handleChartSwitches(event, false)}
                 >
-                    enjoymentRating:{' '}
+                    enjoymentRating{' '}
                     {enjoymentRating ? <span>on</span> : <span>off</span>}
                 </button>
                 <button
@@ -54,46 +55,6 @@ const StudentChart = props => {
                 >
                     Chart {chartType ? <span>Bar</span> : <span>Line</span>}
                 </button>
-                {/* <VictoryChart
-                    domainPadding={6}
-                    theme={wincTheme}
-                    width={1600}
-                    height={400}
-                    padding={{top: 20, bottom: 120, left: 60, right: 100}}
-                >
-                    <VictoryGroup offset={8}>
-                        {difficultyRating ? (
-                            <VictoryBar
-                                labelComponent={<VictoryTooltip />}
-                                data={chartData}
-                                x='assignment'
-                                y='difficultyRating'
-                                tickValues={[1, 2, 3, 4, 5]}
-                                alignment='start'
-                                color='#f2ba0d'
-                            />
-                        ) : null}
-                        {enjoymentRating ? (
-                            <VictoryBar
-                                labelComponent={<VictoryTooltip />}
-                                data={chartData}
-                                x='assignment'
-                                y='enjoymentRating'
-                                tickValues={[1, 2, 3, 4, 5]}
-                                alignment='start'
-                                color='#F27F0D'
-                            />
-                        ) : null}
-                    </VictoryGroup>
-                    <VictoryAxis
-                        tickValues={[1, 2, 3, 4, 5]}
-                        tickFormat={chartData.map(avg => avg.assignment)}
-                        tickLabelComponent={
-                            <VictoryLabel angle={40} textAnchor='start' />
-                        }
-                    />
-                    <VictoryAxis dependentAxis />
-                </VictoryChart> */}
                 {chartType ? (
                     <VictoryChart
                         domainPadding={6}

@@ -33,6 +33,7 @@ const DashboardCharts = props => {
     return (
         <React.Fragment>
             <figure>
+                <h2>Average Rating</h2>
                 <button
                     className='difficultyRating'
                     onClick={event => handleChartSwitches(event, true)}

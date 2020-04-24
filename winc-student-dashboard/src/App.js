@@ -44,6 +44,7 @@ class App extends React.Component {
         this.handleTableSort = this.handleTableSort.bind(this)
         this.handleFilterDashboard = this.handleFilterDashboard.bind(this)
         this.getFilterState = this.getFilterState.bind(this)
+        this.getFilterNames = this.getFilterNames.bind(this)
     }
 
     // componentDidMount() {
@@ -67,6 +68,20 @@ class App extends React.Component {
     //         console.log(error)
     //     }
     // }
+
+    getFilterNames() {
+        let names = this.state.filter.dashboard
+        let filterState = this.getFilterState()
+        if (names.length !== 0) {
+            names = names.join(', ').replace(/,([^,]*)$/, ' and $1')
+
+            if (filterState[1]) {
+                return 'Filtered rating includes ALL students'
+            }
+            return `Filtered rating includes: ${names}`
+        }
+        return ''
+    }
 
     getFilterState(id) {
         const selfFilter = this.state.filter.dashboard.indexOf(id) > -1
@@ -271,6 +286,7 @@ class App extends React.Component {
                             chartType={chartType}
                             handleFilterDashboard={this.handleFilterDashboard}
                             getFilterState={this.getFilterState}
+                            getFilterNames={this.getFilterNames}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>

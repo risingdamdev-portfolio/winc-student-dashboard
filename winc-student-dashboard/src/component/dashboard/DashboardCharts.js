@@ -17,7 +17,8 @@ const DashboardCharts = props => {
         handleChartSwitches,
         difficultyRating,
         enjoymentRating,
-        chartType
+        chartType,
+        getFilterNames
     } = props
 
     let chartData = getAssignmentsAverage()
@@ -30,10 +31,13 @@ const DashboardCharts = props => {
         difficultyRating: ${avg.difficultyRating}, enjoymentRating: ${avg.enjoymentRating}`
     }))
 
+    const filterNames = getFilterNames()
+
     return (
         <React.Fragment>
             <figure>
                 <h2>Average Rating</h2>
+                <p>{filterNames}</p>
                 <button
                     className='difficultyRating'
                     onClick={event => handleChartSwitches(event, true)}
@@ -54,6 +58,7 @@ const DashboardCharts = props => {
                 >
                     Chart {chartType ? <span>Bar</span> : <span>Line</span>}
                 </button>
+
                 {chartType ? (
                     <VictoryChart
                         domainPadding={6}

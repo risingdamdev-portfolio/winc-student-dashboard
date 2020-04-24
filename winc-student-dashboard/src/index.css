@@ -53,6 +53,12 @@ figure {
     justify-content: center;
 }
 
+figure p {
+    flex-basis: 100%;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
 th,
 td {
     padding: 0.5rem 1rem;
@@ -447,5 +453,5 @@ form {
 }
 
 .gray {
-    background-color: hsl(0, 0%, 70%);
+    background-color: hsl(0, 0%, 75%);
 }

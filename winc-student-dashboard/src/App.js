@@ -84,30 +84,29 @@ class App extends React.Component {
     //     this.setState({metaData: data})
     // })
     // }
-
-    async getApiData(method, api, body) {
-        try {
-            let result = await fetch(api, {
-                method: method,
-                body: JSON.stringify(body)
-            })
-            return await result.json()
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // async getApiData(method, api, body) {
+    //     try {
+    //         let result = await fetch(api, {
+    //             method: method,
+    //             body: JSON.stringify(body)
+    //         })
+    //         return await result.json()
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     // Callback function with active students used in dashboard filter
     getFilterNames() {
-        let names = this.state.filter.dashboard
+        let filterNames = this.state.filter.dashboard
         let filterState = this.getFilterState()
-        if (names.length !== 0) {
-            names = names.join(', ').replace(/,([^,]*)$/, ' and $1')
+        if (filterNames.length !== 0) {
+            filterNames = filterNames.join(', ').replace(/,([^,]*)$/, ' and $1')
 
             if (filterState[1]) {
                 return 'Filtered rating includes ALL students'
             }
-            return `Filtered rating includes: ${names}`
+            return `Filtered rating includes: ${filterNames}`
         }
         return ' '
     }
@@ -129,7 +128,7 @@ class App extends React.Component {
     handleFilterDashboard(event, username) {
         event.preventDefault()
         this.setState(state => {
-            let exists = state.filter.dashboard.find(item => {
+            const exists = state.filter.dashboard.find(item => {
                 return username === item
             })
             if (exists === undefined) {
@@ -158,7 +157,6 @@ class App extends React.Component {
     // Adds ID and username for routing purposes
     getStudentNames() {
         const studentData = this.state.studentData
-
         let studentNames = []
         let studentID = 1
         studentData.forEach(row => {
@@ -175,7 +173,6 @@ class App extends React.Component {
                 studentID++
             }
         })
-
         return studentNames.map(row => {
             return {
                 id: row.id,
@@ -247,7 +244,6 @@ class App extends React.Component {
         const {student} = props
         const studentData = this.state.studentData
         let assignments = this.getAssignmentNames(studentData)
-
         let assignmentsWithData = assignments.map(a => {
             let data = studentData.filter(s => {
                 return (
@@ -303,7 +299,6 @@ class App extends React.Component {
         })
     }
 
-    // Time to render!
     render() {
         const chartType = this.state.charts.chartType
         const difficultyRating = this.state.charts.difficultyRating

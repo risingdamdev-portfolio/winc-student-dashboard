@@ -54,10 +54,11 @@ const Dashboard = props => {
                 }
             >
                 <button
-                    className='checkBox'
+                    class={localCheckboxState ? 'checkBox' : 'checkBox gray'}
                     onClick={event => handleFilterDashboard(event, row.id)}
                 >
-                    {localCheckboxState ? 'on' : 'off'}
+                    filter{' '}
+                    {localCheckboxState ? <span>on</span> : <span>off</span>}
                 </button>
                 <Link to={url}>
                     <img

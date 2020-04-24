@@ -378,15 +378,11 @@ footer span a:hover {
 
 .difficultyRating span,
 .enjoymentRating span,
-.chartType span {
+.chartType span,
+.checkBox span {
     font-size: inherit;
     padding-left: 4px;
     border-left: 2px solid hsla(0, 0%, 100%, 0.5);
-}
-
-.checkBox.checked {
-    background: url('/checkmark.svg') no-repeat center, hsla(30, 90%, 50%, 1);
-    background-size: 16px 12px, auto;
 }
 
 form {
@@ -437,4 +433,8 @@ form {
 
 .dimmed {
     opacity: 0.5;
+}
+
+.gray {
+    background-color: hsl(0, 0%, 70%);
 }

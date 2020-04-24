@@ -80,18 +80,17 @@ class App extends React.Component {
         return [selfFilter, allFilter]
     }
 
-    handleFilterDashboard(event, id) {
-        //console.log(id)
+    handleFilterDashboard(event, username) {
         event.preventDefault()
         this.setState(state => {
             let exists = state.filter.dashboard.find(item => {
-                return id === item
+                return username === item
             })
             if (exists === undefined) {
-                state.filter.dashboard.push(id)
+                state.filter.dashboard.push(username)
             } else {
                 state.filter.dashboard = state.filter.dashboard.filter(item => {
-                    return id !== item
+                    return username !== item
                 })
             }
             return state
@@ -151,13 +150,23 @@ class App extends React.Component {
     }
 
     getAssignmentsAverage() {
-        const studentData = this.state.studentData
+        let studentData = this.state.studentData
+        const dashboardFilter = this.state.filter.dashboard
         let assignments = this.getAssignmentNames()
-
         let assignmentsWithData = assignments.map(a => {
-            let data = studentData.filter(s => {
-                return a.assignment === s.assignment
-            })
+            let data = {}
+            if (dashboardFilter.length !== 0) {
+                data = studentData.filter(s => {
+                    return (
+                        a.assignment === s.assignment &&
+                        dashboardFilter.indexOf(s.username.toLowerCase()) > -1
+                    )
+                })
+            } else {
+                data = studentData.filter(s => {
+                    return a.assignment === s.assignment
+                })
+            }
             const count = data.length
             let difficultyRating = data
                 .map(d => {
@@ -246,8 +255,6 @@ class App extends React.Component {
         const enjoymentRating = this.state.charts.enjoymentRating
         const chartType = this.state.charts.chartType
         const tableView = this.state.tableView
-
-        console.log(this.state.filter.dashboard)
 
         return (
             <Router>

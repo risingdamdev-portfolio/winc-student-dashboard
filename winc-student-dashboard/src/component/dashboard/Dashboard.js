@@ -38,7 +38,7 @@ const Dashboard = props => {
         let url = `${HOME_URL}/id/${row.id}/username/${row.username}`
         let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
 
-        const checkboxState = getFilterState(row.id)
+        const checkboxState = getFilterState(row.username)
         const localCheckboxState = checkboxState[0]
         const globalCheckboxState = checkboxState[1]
 
@@ -54,8 +54,12 @@ const Dashboard = props => {
                 }
             >
                 <button
-                    class={localCheckboxState ? 'checkBox' : 'checkBox gray'}
-                    onClick={event => handleFilterDashboard(event, row.id)}
+                    className={
+                        localCheckboxState ? 'checkBox' : 'checkBox gray'
+                    }
+                    onClick={event =>
+                        handleFilterDashboard(event, row.username)
+                    }
                 >
                     filter{' '}
                     {localCheckboxState ? <span>on</span> : <span>off</span>}

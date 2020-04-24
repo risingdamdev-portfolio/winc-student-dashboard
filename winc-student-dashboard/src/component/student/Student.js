@@ -135,7 +135,7 @@ const Student = props => {
                     urlToTable={urlToTable}
                 />
 
-                <table>
+                <table className='studentTable'>
                     <thead>
                         <tr className='skip'>
                             <th colSpan='2'>

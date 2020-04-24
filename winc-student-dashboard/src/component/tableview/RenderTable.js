@@ -70,7 +70,9 @@ const RenderTable = props => {
                                             alt='Sort'
                                         />
                                     )
-                                ) : null}
+                                ) : (
+                                    <img src={'/sort.png'} alt='Sort' />
+                                )}
                             </th>
                             <th onClick={() => handleTableSort('assignment')}>
                                 Assignment
@@ -83,7 +85,9 @@ const RenderTable = props => {
                                             alt='Sort'
                                         />
                                     )
-                                ) : null}
+                                ) : (
+                                    <img src={'/sort.png'} alt='Sort' />
+                                )}
                             </th>
                             <th
                                 onClick={() =>
@@ -100,7 +104,9 @@ const RenderTable = props => {
                                             alt='Sort'
                                         />
                                     )
-                                ) : null}
+                                ) : (
+                                    <img src={'/sort.png'} alt='Sort' />
+                                )}
                             </th>
                             <th
                                 onClick={() =>
@@ -117,7 +123,9 @@ const RenderTable = props => {
                                             alt='Sort'
                                         />
                                     )
-                                ) : null}
+                                ) : (
+                                    <img src={'/sort.png'} alt='Sort' />
+                                )}
                             </th>
                         </tr>
                     </thead>

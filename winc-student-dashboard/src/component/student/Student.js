@@ -119,11 +119,19 @@ const Student = props => {
                     getAssignmentForStudent={getAssignmentForStudent}
                     username={username}
                     chartType={chartType}
+                    urlToTable={urlToTable}
                 />
+
                 <table>
+                    <thead>
+                        <tr className='skip'>
+                            <th colSpan='2'>
+                                <h2>Student Details</h2>
+                            </th>
+                        </tr>
+                    </thead>
                     <tbody>{tableData}</tbody>
                 </table>
-
                 <Link className='toTableview' to={urlToTable}>
                     {STORE_LABEL}
                 </Link>

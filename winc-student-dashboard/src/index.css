@@ -60,7 +60,7 @@ td {
 }
 
 td a {
-    background-color: hsla(210, 0%, 100%, 1);
+    background-color: hsla(210, 60%, 50%, 0.25);
     text-decoration: none;
     padding: 2px 0.5rem 2px;
     border-radius: 3px;
@@ -68,11 +68,11 @@ td a {
 }
 
 td a:hover {
-    background-color: hsla(210, 60%, 50%, 0.25);
+    background-color: hsla(210, 60%, 50%, 0.4);
     color: hsla(210, 60%, 50%, 1);
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd):not(.skip) {
     background-color: hsla(210, 60%, 50%, 0.1);
 }
 

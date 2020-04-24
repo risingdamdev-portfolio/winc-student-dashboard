@@ -49,7 +49,7 @@ const StudentChart = props => {
                 <VictoryChart
                     domainPadding={6}
                     theme={wincTheme}
-                    width={1200}
+                    width={1600}
                     height={400}
                     padding={{top: 20, bottom: 120, left: 60, right: 100}}
                 >

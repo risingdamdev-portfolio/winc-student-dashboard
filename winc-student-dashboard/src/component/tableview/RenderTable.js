@@ -35,15 +35,17 @@ const RenderTable = props => {
 
     return (
         <React.Fragment>
-            <p>
-                Filter by student:{' '}
-                <select
-                    onChange={event => handleTableviewSelect(event)}
-                    value={student.username}
-                >
-                    {selectItems}
-                </select>
-            </p>
+            <form>
+                <div className='filterByStudent'>
+                    <span>Filter by student</span>
+                    <select
+                        onChange={event => handleTableviewSelect(event)}
+                        value={student.username}
+                    >
+                        {selectItems}
+                    </select>
+                </div>
+            </form>
             <div className='tableview'>
                 <table>
                     <thead>

@@ -94,8 +94,9 @@ tr:last-of-type td {
     text-align: center;
 }
 
-td:first-of-type:not(.center) {
+td:first-of-type {
     text-align: right;
+    font-weight: 700;
 }
 
 table {
@@ -199,8 +200,8 @@ main ul li a:last-of-type,
     background-color: hsla(45, 90%, 50%, 1);
     border-radius: 3px;
     width: auto;
-    padding: 2px 0.5rem 2px;
-    color: white;
+    padding: 0.25rem 0.5rem 0.25rem;
+    color: hsla(0, 0%, 100%, 1);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.75rem;
@@ -298,8 +299,8 @@ footer a:hover {
     background-color: hsla(45, 90%, 50%, 1);
     border-radius: 3px;
     width: auto;
-    padding: 2px 0.5rem 2px;
-    color: white;
+    padding: 0.25rem 0.5rem 0.25rem;
+    color: hsla(0, 0%, 100%, 1);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.75rem;
@@ -337,4 +338,53 @@ footer a:hover {
     font-size: inherit;
     padding-left: 4px;
     border-left: 2px solid hsla(0, 0%, 100%, 0.5);
+}
+
+form {
+    display: flex;
+}
+
+.filterByStudent select {
+    appearance: none;
+    border: none;
+    background: url('/arrow.svg') no-repeat right 50%, hsla(45, 90%, 50%, 1);
+    background-size: 16px 12px, auto;
+    border-radius: 3px;
+    width: auto;
+    padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+    color: hsla(0, 0%, 100%, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.filterByStudent select:focus {
+    outline: none;
+}
+
+.filterByStudent select:hover {
+    background-color: hsla(45, 100%, 60%, 1);
+}
+
+.filterByStudent {
+    background-color: hsla(45, 90%, 50%, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0 0 0 0.5rem;
+    border-radius: 3px;
+    color: hsla(0, 0%, 100%, 1);
+}
+
+.filterByStudent span {
+    padding-right: 0.5rem;
+    border-right: 2px solid hsla(0, 0%, 100%, 0.5);
+    font-size: inherit;
+}
+
+.filterByStudent:hover {
+    background-color: hsla(45, 100%, 60%, 1);
 }

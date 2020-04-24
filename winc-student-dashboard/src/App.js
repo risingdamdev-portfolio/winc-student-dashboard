@@ -8,16 +8,41 @@ import {
 import Student from './component/student/Student'
 import Dashboard from './component/dashboard/Dashboard'
 import Tableview from './component/tableview/Tableview'
+import {HOME_URL, STORE_URL} from './Config'
 
-// Use static files instead of getApiData for testing
+/**
+ *
+ *  Use tese static files instead of getApiData for testing
+ *
+ */
+
 import studentData from './data/studentData.json'
 import metaData from './data/metaData.json'
 
-import {HOME_URL, STORE_URL} from './Config'
+/**
+ *
+ *  Main component for the Student Dashboard
+ *  State:
+ *    studentData: Sample student data from Winc headquarters
+ *    metaData: Sample metadata from https://www.mockaroo.com/ for 10 students
+ *
+ *    tableView . filterByStudent: Current student username for tableview
+ *    tableView . sortBy: Current tableview sort column
+ *      (username, assignment, difficultyRating, enjoymentRating)
+ *    tableView . sortOrder: Current tableview sort order (asc or desc)
+ *
+ *    charts . difficultyRating: Boolean for switching difficulty rating data
+ *    charts . enjoymentRating: Boolean for switching enjoyment rating data
+ *    charts . chartType: Boolean for switching chart type
+ *
+ *    filter . dashboard: Conditional rendering of chart by student selection
+ *
+ */
 
 class App extends React.Component {
     constructor() {
         super()
+
         this.state = {
             studentData: studentData,
             metaData: metaData,
@@ -35,20 +60,23 @@ class App extends React.Component {
                 dashboard: []
             }
         }
-        this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
+
         this.handleChartSwitches = this.handleChartSwitches.bind(this)
-        this.getAssignmentForStudent = this.getAssignmentForStudent.bind(this)
-        this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
-        this.getAssignmentNames = this.getAssignmentNames.bind(this)
-        this.getStudentNames = this.getStudentNames.bind(this)
-        this.handleTableSort = this.handleTableSort.bind(this)
         this.handleFilterDashboard = this.handleFilterDashboard.bind(this)
-        this.getFilterState = this.getFilterState.bind(this)
+        this.handleTableSort = this.handleTableSort.bind(this)
+        this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
+
+        this.getAssignmentForStudent = this.getAssignmentForStudent.bind(this)
+        this.getAssignmentNames = this.getAssignmentNames.bind(this)
+        this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
         this.getFilterNames = this.getFilterNames.bind(this)
+        this.getFilterState = this.getFilterState.bind(this)
+        this.getStudentNames = this.getStudentNames.bind(this)
     }
 
+    // Use static files instead of getApiData for testing; switch to API later
+
     // componentDidMount() {
-    // Use static files instead of getApiData for testing
     // this.getApiData('GET', '/studentData.json').then(data => {
     //     this.setState({studentData: data})
     // })
@@ -56,19 +84,20 @@ class App extends React.Component {
     //     this.setState({metaData: data})
     // })
     // }
-    // Use static files instead of getApiData for testing
-    // async getApiData(method, api, body) {
-    //     try {
-    //         let result = await fetch(api, {
-    //             method: method,
-    //             body: JSON.stringify(body)
-    //         })
-    //         return await result.json()
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
+    async getApiData(method, api, body) {
+        try {
+            let result = await fetch(api, {
+                method: method,
+                body: JSON.stringify(body)
+            })
+            return await result.json()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // Callback function with active students used in dashboard filter
     getFilterNames() {
         let names = this.state.filter.dashboard
         let filterState = this.getFilterState()
@@ -83,6 +112,7 @@ class App extends React.Component {
         return ' '
     }
 
+    // Callback function with active filter state
     getFilterState(id) {
         const selfFilter = this.state.filter.dashboard.indexOf(id) > -1
         let allFilter = false
@@ -95,6 +125,7 @@ class App extends React.Component {
         return [selfFilter, allFilter]
     }
 
+    // Update state with currently selected students
     handleFilterDashboard(event, username) {
         event.preventDefault()
         this.setState(state => {
@@ -112,6 +143,7 @@ class App extends React.Component {
         })
     }
 
+    // Update state with sort column and order for tableview
     handleTableSort(sortBy) {
         this.setState(state => {
             let sortOrder = state.tableView.sortOrder
@@ -122,6 +154,8 @@ class App extends React.Component {
         })
     }
 
+    // Parse student names from student data
+    // Adds ID and username for routing purposes
     getStudentNames() {
         const studentData = this.state.studentData
 
@@ -151,6 +185,7 @@ class App extends React.Component {
         })
     }
 
+    // Parse assignment names from student data
     getAssignmentNames() {
         const studentData = this.state.studentData
         let assignments = []
@@ -164,6 +199,8 @@ class App extends React.Component {
         return assignments
     }
 
+    // Calculate average assignment difficulty and enjoyment
+    //   ratings for all students
     getAssignmentsAverage() {
         let studentData = this.state.studentData
         const dashboardFilter = this.state.filter.dashboard
@@ -204,6 +241,8 @@ class App extends React.Component {
         return assignmentsWithData
     }
 
+    // Calculate average assignment difficulty and enjoyment ratings
+    //   for one student (modified version of getAssignmentsAverage)
     getAssignmentForStudent(props) {
         const {student} = props
         const studentData = this.state.studentData
@@ -225,6 +264,7 @@ class App extends React.Component {
         return assignmentsWithData
     }
 
+    // Update state with selected student for tableview
     handleTableviewSelect(event) {
         event.preventDefault()
         const student = event.target.value
@@ -234,6 +274,7 @@ class App extends React.Component {
         })
     }
 
+    // Update state with chartType, difficultyRating and enjoymentRating
     handleChartSwitches(event, chartSwitch) {
         event.preventDefault()
         this.setState(state => {
@@ -262,40 +303,62 @@ class App extends React.Component {
         })
     }
 
+    // Time to render!
     render() {
-        const metadata = this.state.metaData
-        const studentData = this.state.studentData
-        const filterByStudent = this.state.tableView.filterByStudent
+        const chartType = this.state.charts.chartType
         const difficultyRating = this.state.charts.difficultyRating
         const enjoymentRating = this.state.charts.enjoymentRating
-        const chartType = this.state.charts.chartType
+        const filterByStudent = this.state.tableView.filterByStudent
+        const metadata = this.state.metaData
+        const studentData = this.state.studentData
         const tableView = this.state.tableView
+
+        /**
+         *
+         *   Router configuration for 4 endpoints:
+         *     /dashboard/students => Home URL
+         *     /dashboard/students/tableview => Tableview (optional)
+         *     /dashboard/students/tableview/id/:id/username/:username
+         *       => Tableview for selected student
+         *          id: Student ID
+         *          username: Student username in lowercase
+         *          /id/ and /username/ are for URL readability
+         *          Combination of id and username makes URLs unique
+         *     /dashboard/students/id/:id/username/:username
+         *       => Student details for selected student
+         *          id: Student ID
+         *          username: Student username in lowercase
+         *          /id/ and /username/ are for URL readability
+         *          Combination of id and username makes URLs unique
+         *     / => Redirects website root to /dashboard/students
+         *
+         **/
 
         return (
             <Router>
                 <Switch>
                     <Route exact path={HOME_URL}>
                         <Dashboard
-                            getStudentNames={this.getStudentNames}
-                            metadata={metadata}
-                            studentData={studentData}
-                            getAssignmentsAverage={this.getAssignmentsAverage}
-                            handleChartSwitches={this.handleChartSwitches}
+                            chartType={chartType}
                             difficultyRating={difficultyRating}
                             enjoymentRating={enjoymentRating}
-                            chartType={chartType}
-                            handleFilterDashboard={this.handleFilterDashboard}
-                            getFilterState={this.getFilterState}
+                            getAssignmentsAverage={this.getAssignmentsAverage}
                             getFilterNames={this.getFilterNames}
+                            getFilterState={this.getFilterState}
+                            getStudentNames={this.getStudentNames}
+                            handleChartSwitches={this.handleChartSwitches}
+                            handleFilterDashboard={this.handleFilterDashboard}
+                            metadata={metadata}
+                            studentData={studentData}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
                         <Tableview
-                            getStudentNames={this.getStudentNames}
-                            studentData={studentData}
-                            handleTableviewSelect={this.handleTableviewSelect}
                             filterByStudent={filterByStudent}
+                            getStudentNames={this.getStudentNames}
                             handleTableSort={this.handleTableSort}
+                            handleTableviewSelect={this.handleTableviewSelect}
+                            studentData={studentData}
                             tableView={tableView}
                         />
                     </Route>
@@ -304,25 +367,25 @@ class App extends React.Component {
                         path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
                     >
                         <Tableview
-                            getStudentNames={this.getStudentNames}
-                            studentData={studentData}
-                            handleTableviewSelect={this.handleTableviewSelect}
                             filterByStudent={filterByStudent}
+                            getStudentNames={this.getStudentNames}
                             handleTableSort={this.handleTableSort}
+                            handleTableviewSelect={this.handleTableviewSelect}
+                            studentData={studentData}
                             tableView={tableView}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}/id/:id/username/:username`}>
                         <Student
-                            getStudentNames={this.getStudentNames}
-                            metadata={metadata}
-                            handleChartSwitches={this.handleChartSwitches}
+                            chartType={chartType}
+                            difficultyRating={difficultyRating}
+                            enjoymentRating={enjoymentRating}
                             getAssignmentForStudent={
                                 this.getAssignmentForStudent
                             }
-                            difficultyRating={difficultyRating}
-                            enjoymentRating={enjoymentRating}
-                            chartType={chartType}
+                            getStudentNames={this.getStudentNames}
+                            handleChartSwitches={this.handleChartSwitches}
+                            metadata={metadata}
                         />
                     </Route>
                     <Redirect from='/' to={HOME_URL} />

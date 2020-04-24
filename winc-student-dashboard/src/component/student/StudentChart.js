@@ -25,12 +25,12 @@ import wincTheme from '../utility/wincTheme'
 
 const StudentChart = props => {
     const {
-        handleChartSwitches,
+        chartType,
         difficultyRating,
         enjoymentRating,
         getAssignmentForStudent,
-        username,
-        chartType
+        handleChartSwitches,
+        username
     } = props
 
     let chartData = getAssignmentForStudent({student: username})
@@ -47,6 +47,7 @@ const StudentChart = props => {
         <React.Fragment>
             <figure>
                 <h2>Student Rating</h2>
+
                 <button
                     className='difficultyRating'
                     onClick={event => handleChartSwitches(event, true)}
@@ -54,6 +55,7 @@ const StudentChart = props => {
                     difficultyRating{' '}
                     {difficultyRating ? <span>on</span> : <span>off</span>}
                 </button>
+
                 <button
                     className='enjoymentRating'
                     onClick={event => handleChartSwitches(event, false)}
@@ -61,12 +63,15 @@ const StudentChart = props => {
                     enjoymentRating{' '}
                     {enjoymentRating ? <span>on</span> : <span>off</span>}
                 </button>
+
                 <button
                     className='chartType'
                     onClick={event => handleChartSwitches(event, '')}
                 >
                     Chart {chartType ? <span>Bar</span> : <span>Line</span>}
                 </button>
+
+                {/* Tenary logic for conditional rendering of chart data */}
                 {chartType ? (
                     <VictoryChart
                         domainPadding={6}

@@ -23,64 +23,65 @@ import {HOME_URL, STORE_LABEL} from '../../Config'
 const Tableview = props => {
     const params = useParams()
     const {
-        getStudentNames,
-        studentData,
-        handleTableviewSelect,
         filterByStudent,
+        getStudentNames,
         handleTableSort,
+        handleTableviewSelect,
+        studentData,
         tableView
     } = props
 
-    let studentNames = getStudentNames()
+    // choose default student ...
+    const studentNames = getStudentNames()
     let student = studentNames[0]
 
+    // but change to username from URL is available ...
     if (params.username !== undefined) {
         student = studentNames.find(student => {
             return student.username === params.username
         })
     }
 
+    // except when username is already set by state!
     if (filterByStudent !== '') {
         student = studentNames.find(student => {
             return student.username === filterByStudent.toLowerCase()
         })
     }
 
+    // filter data for student and sort
     let studentDataFiltered = studentData.filter(row => {
         return student.username === row.username.toLowerCase()
     })
-
     studentDataFiltered = Sort(
         studentDataFiltered,
         tableView.sortOrder,
         tableView.sortBy
     )
 
-    let urlToStudent = ''
-    if (student !== undefined) {
-        urlToStudent = (
-            <li>
-                <a
-                    href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
-                >
-                    {student.name}
-                </a>
-            </li>
-        )
-    }
+    const urlToStudent = (
+        <li>
+            <a
+                href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
+            >
+                {student.name}
+            </a>
+        </li>
+    )
+
     return (
         <React.Fragment>
-            <Nav nav='DataTable' urlToStudent={urlToStudent} />
+            <Nav nav='Tableview' urlToStudent={urlToStudent} />
             <main>
                 <header>
                     <h1>{STORE_LABEL}</h1>
                 </header>
                 <RenderTable
-                    student={student}
-                    studentNames={studentNames}
-                    studentDataFiltered={studentDataFiltered}
-                    handleTableviewSelect={handleTableviewSelect}
                     handleTableSort={handleTableSort}
+                    handleTableviewSelect={handleTableviewSelect}
+                    student={student}
+                    studentDataFiltered={studentDataFiltered}
+                    studentNames={studentNames}
                     tableView={tableView}
                 />
             </main>

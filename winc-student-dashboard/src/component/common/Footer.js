@@ -1,9 +1,10 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {WINC_URL, WINC_LABEL, DEV_URL, DEV_LABEL} from '../../Config'
 
 /**
  *
- *  Footer component with Back to top link
+ *  Footer component with ‘Back to top’ link
  *
  */
 
@@ -12,27 +13,19 @@ const Footer = () => {
         <footer>
             <span>
                 Developed for{' '}
-                <a
-                    href={WINC_URL}
-                    alt={`Link to ${WINC_LABEL}`}
-                    rel='noopener nofollow'
-                >
+                <Link to={WINC_URL} alt={`Link to ${WINC_LABEL}`}>
                     {WINC_LABEL}
-                </a>{' '}
+                </Link>{' '}
                 by{' '}
-                <a
-                    href={DEV_URL}
-                    alt={`Link to ${DEV_LABEL}`}
-                    rel='noopener nofollow'
-                >
+                <Link to={DEV_URL} alt={`Link to ${DEV_LABEL}`}>
                     {DEV_LABEL}
-                </a>
+                </Link>
                 , © 2020 in infinitum
             </span>
             <span>
-                <a href='#top' alt={`Back to top`} rel='noopener nofollow'>
+                <Link to='#top' alt={`Back to top`}>
                     Back to top
-                </a>
+                </Link>
             </span>
         </footer>
     )

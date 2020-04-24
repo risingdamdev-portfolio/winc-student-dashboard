@@ -14,6 +14,9 @@ import {
  *
  *  @param {object} props: Navigation component
  *  Switches between three variations of <nav>
+ *     Dashboard
+ *     Tableview
+ *     Student
  *
  */
 
@@ -21,7 +24,7 @@ const Nav = props => {
     const {nav} = props
 
     switch (nav) {
-        case 'DataTable':
+        case 'Tableview':
             return (
                 <nav>
                     <ul>
@@ -45,7 +48,7 @@ const Nav = props => {
                     </ul>
                 </nav>
             )
-        case 'StudentList':
+        case 'Dashboard':
             return (
                 <nav>
                     <ul>

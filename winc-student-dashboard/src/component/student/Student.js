@@ -21,52 +21,41 @@ import {HOME_URL, STORE_URL, STORE_LABEL} from '../../Config'
 const Student = props => {
     const {username, id} = useParams()
     const {
-        getStudentNames,
-        metadata,
-        handleChartSwitches,
-        getAssignmentForStudent,
+        chartType,
         difficultyRating,
         enjoymentRating,
-        chartType
+        getAssignmentForStudent,
+        getStudentNames,
+        handleChartSwitches,
+        metadata
     } = props
 
-    let studentNames = getStudentNames()
+    const studentNames = getStudentNames()
 
-    if (studentNames === []) {
-        return ''
-    }
     let student = studentNames.find(student => {
         return student.id === parseInt(id)
     })
 
-    let studentData = metadata.find(row => {
+    const studentData = metadata.find(row => {
         return student.id === parseInt(row.id)
     })
-
-    if (studentData === undefined) {
-        return ''
-    }
 
     let tableData = []
     let keyID = 0
     let lastName = ''
-
-    let urlToStudent = ''
-    let urlToTable = ''
     let studentAvatar = {}
-    if (student !== undefined) {
-        urlToStudent = (
-            <li>
-                <a
-                    className='active'
-                    href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
-                >
-                    {student.name}
-                </a>
-            </li>
-        )
-        urlToTable = `${HOME_URL}${STORE_URL}/id/${student.id}/username/${student.username}`
-    }
+
+    const urlToStudent = (
+        <li>
+            <a
+                className='active'
+                href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
+            >
+                {student.name}
+            </a>
+        </li>
+    )
+    const urlToTable = `${HOME_URL}${STORE_URL}/id/${student.id}/username/${student.username}`
 
     for (let [key, value] of Object.entries(studentData)) {
         keyID++
@@ -113,10 +102,10 @@ const Student = props => {
     return (
         <React.Fragment>
             <Nav
-                nav='Student'
                 id={id}
-                username={username}
+                nav='Student'
                 urlToStudent={urlToStudent}
+                username={username}
             />
             <main>
                 <header>
@@ -126,13 +115,13 @@ const Student = props => {
                     </h1>
                 </header>
                 <StudentChart
-                    handleChartSwitches={handleChartSwitches}
+                    chartType={chartType}
                     difficultyRating={difficultyRating}
                     enjoymentRating={enjoymentRating}
                     getAssignmentForStudent={getAssignmentForStudent}
-                    username={username}
-                    chartType={chartType}
+                    handleChartSwitches={handleChartSwitches}
                     urlToTable={urlToTable}
+                    username={username}
                 />
 
                 <table className='studentTable'>
@@ -145,6 +134,7 @@ const Student = props => {
                     </thead>
                     <tbody>{tableData}</tbody>
                 </table>
+
                 <Link className='toTableview' to={urlToTable}>
                     {STORE_LABEL}
                 </Link>

@@ -32,19 +32,19 @@ import {
 
 const Dashboard = props => {
     const {
-        getStudentNames,
-        metadata,
-        getAssignmentsAverage,
-        handleChartSwitches,
+        chartType,
         difficultyRating,
         enjoymentRating,
-        chartType,
-        handleFilterDashboard,
+        getAssignmentsAverage,
+        getFilterNames,
         getFilterState,
-        getFilterNames
+        getStudentNames,
+        handleChartSwitches,
+        handleFilterDashboard,
+        metadata
     } = props
 
-    let studentList = Sort(getStudentNames(), true, 'username')
+    const studentList = Sort(getStudentNames(), true, 'username')
 
     let listElements = []
     listElements = studentList.map(row => {
@@ -52,19 +52,20 @@ const Dashboard = props => {
             return parseInt(meta.id) === row.id
         })
 
-        let url = `${HOME_URL}/id/${row.id}/username/${row.username}`
-        let urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
+        const urlToStudent = `${HOME_URL}/id/${row.id}/username/${row.username}`
+        const urlToTable = `${HOME_URL}${STORE_URL}/id/${row.id}/username/${row.username}`
 
-        const checkboxState = getFilterState(row.username)
-        const localCheckboxState = checkboxState[0]
-        const globalCheckboxState = checkboxState[1]
+        const filterState = getFilterState(row.username)
+        const filterStudentState = filterState[0]
+        const filterAllState = filterState[1]
 
+        // Tenary logic for rendering student selection display
         return (
             <li
                 key={row.id}
                 className={
-                    localCheckboxState
-                        ? globalCheckboxState
+                    filterStudentState
+                        ? filterAllState
                             ? 'dimmed'
                             : null
                         : null
@@ -72,16 +73,16 @@ const Dashboard = props => {
             >
                 <button
                     className={
-                        localCheckboxState ? 'checkBox' : 'checkBox gray'
+                        filterStudentState ? 'checkBox' : 'checkBox gray'
                     }
                     onClick={event =>
                         handleFilterDashboard(event, row.username)
                     }
                 >
                     filter{' '}
-                    {localCheckboxState ? <span>on</span> : <span>off</span>}
+                    {filterStudentState ? <span>on</span> : <span>off</span>}
                 </button>
-                <Link to={url}>
+                <Link to={urlToStudent}>
                     <img
                         className='avatar'
                         src={`/avatar/${studentData.avatar}`}
@@ -97,19 +98,19 @@ const Dashboard = props => {
 
     return (
         <React.Fragment>
-            <Nav nav='StudentList' />
+            <Nav nav='Dashboard' />
             <main>
                 <header>
                     <h1>{HOME_LABEL}</h1>
                 </header>
 
                 <DashboardCharts
-                    getAssignmentsAverage={getAssignmentsAverage}
-                    handleChartSwitches={handleChartSwitches}
+                    chartType={chartType}
                     difficultyRating={difficultyRating}
                     enjoymentRating={enjoymentRating}
-                    chartType={chartType}
+                    getAssignmentsAverage={getAssignmentsAverage}
                     getFilterNames={getFilterNames}
+                    handleChartSwitches={handleChartSwitches}
                 />
 
                 <header>

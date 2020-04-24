@@ -55,6 +55,8 @@ const RenderTable = props => {
                     </select>
                 </div>
             </form>
+
+            {/* Tenary logic for conditional rendering of column sort */}
             <div className='tableview'>
                 <table>
                     <thead>

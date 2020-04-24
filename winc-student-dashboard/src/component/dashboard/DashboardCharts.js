@@ -25,12 +25,12 @@ import wincTheme from '../utility/wincTheme'
 
 const DashboardCharts = props => {
     const {
-        getAssignmentsAverage,
-        handleChartSwitches,
+        chartType,
         difficultyRating,
         enjoymentRating,
-        chartType,
-        getFilterNames
+        getAssignmentsAverage,
+        getFilterNames,
+        handleChartSwitches
     } = props
 
     let chartData = getAssignmentsAverage()
@@ -50,6 +50,7 @@ const DashboardCharts = props => {
             <figure>
                 <h2>Average Rating</h2>
                 <p>{filterNames}</p>
+
                 <button
                     className='difficultyRating'
                     onClick={event => handleChartSwitches(event, true)}
@@ -57,6 +58,7 @@ const DashboardCharts = props => {
                     difficultyRating{' '}
                     {difficultyRating ? <span>on</span> : <span>off</span>}
                 </button>
+
                 <button
                     className='enjoymentRating'
                     onClick={event => handleChartSwitches(event, false)}
@@ -64,6 +66,7 @@ const DashboardCharts = props => {
                     enjoymentRating{' '}
                     {enjoymentRating ? <span>on</span> : <span>off</span>}
                 </button>
+
                 <button
                     className='chartType'
                     onClick={event => handleChartSwitches(event, '')}
@@ -71,6 +74,7 @@ const DashboardCharts = props => {
                     Chart {chartType ? <span>Bar</span> : <span>Line</span>}
                 </button>
 
+                {/* Tenary logic for conditional rendering of chart data */}
                 {chartType ? (
                     <VictoryChart
                         domainPadding={6}

@@ -1,7 +1,13 @@
 import React from 'react'
 
 const RenderTable = props => {
-    let {student, studentNames, studentData, handleTableviewSelect} = props
+    let {
+        student,
+        studentNames,
+        studentDataFiltered,
+        handleTableviewSelect,
+        handleTableSort
+    } = props
 
     let currentUser = ''
     const selectItems = studentNames.map(row => {
@@ -15,7 +21,7 @@ const RenderTable = props => {
         )
     })
 
-    let tableData = studentData.map((datapoint, index) => {
+    let tableData = studentDataFiltered.map((datapoint, index) => {
         return (
             <tr key={index}>
                 <td>{datapoint.username}</td>
@@ -41,10 +47,26 @@ const RenderTable = props => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Assignment</th>
-                            <th>Difficulty</th>
-                            <th>Enjoyment</th>
+                            <th onClick={() => handleTableSort('username')}>
+                                Username
+                            </th>
+                            <th onClick={() => handleTableSort('assignment')}>
+                                Assignment
+                            </th>
+                            <th
+                                onClick={() =>
+                                    handleTableSort('difficultyRating')
+                                }
+                            >
+                                Difficulty
+                            </th>
+                            <th
+                                onClick={() =>
+                                    handleTableSort('enjoymentRating')
+                                }
+                            >
+                                Enjoyment
+                            </th>
                         </tr>
                     </thead>
                     <tbody>{tableData}</tbody>

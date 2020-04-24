@@ -4,7 +4,11 @@ const STORE_URL = '/tableview'
 const STORE_LABEL = 'Tableview'
 const STUDENTS_LABEL = 'Students'
 const LOGO_IMAGE = '/logo.png'
-const LOGO_ALT_TEXT = 'Winc Academy Logo'
+const LOGO_LABEL = 'Winc Academy Logo'
+const WINC_URL = 'https://wincadademy.nl'
+const WINC_LABEL = 'Winc Academy'
+const DEV_URL = 'https://leon.ist'
+const DEV_LABEL = 'Leonist'
 
 export {
     HOME_URL,
@@ -13,5 +17,9 @@ export {
     STORE_LABEL,
     STUDENTS_LABEL,
     LOGO_IMAGE,
-    LOGO_ALT_TEXT
+    LOGO_LABEL,
+    WINC_URL,
+    WINC_LABEL,
+    DEV_URL,
+    DEV_LABEL
 }

@@ -22,7 +22,9 @@ class App extends React.Component {
             studentData: studentData,
             metaData: metaData,
             tableView: {
-                student: ''
+                filterByStudent: '',
+                sortBy: 'assignment',
+                sortOrder: 'true'
             },
             charts: {difficultyRating: true, enjoymentRating: true}
         }
@@ -32,6 +34,7 @@ class App extends React.Component {
         this.getAssignmentsAverage = this.getAssignmentsAverage.bind(this)
         this.getAssignmentNames = this.getAssignmentNames.bind(this)
         this.getStudentNames = this.getStudentNames.bind(this)
+        this.handleTableSort = this.handleTableSort.bind(this)
     }
 
     componentDidMount() {
@@ -57,12 +60,22 @@ class App extends React.Component {
     //     }
     // }
 
+    handleTableSort(sortBy) {
+        this.setState(state => {
+            let sortOrder = state.tableView.sortOrder
+            sortBy !== state.tableView.sortBy && (sortOrder = false)
+            state.tableView.sortBy = sortBy
+            state.tableView.sortOrder = !sortOrder
+            return state
+        })
+    }
+
     getStudentNames() {
-        const students = this.state.studentData
+        const studentData = this.state.studentData
 
         let studentNames = []
         let studentID = 1
-        students.forEach(row => {
+        studentData.forEach(row => {
             if (
                 studentNames.findIndex(
                     index => index.username === row.username
@@ -87,10 +100,10 @@ class App extends React.Component {
     }
 
     getAssignmentNames() {
-        const students = this.state.studentData
+        const studentData = this.state.studentData
         let assignments = []
         const map = new Map()
-        for (const item of students) {
+        for (const item of studentData) {
             if (!map.has(item.assignment)) {
                 map.set(item.assignment, true)
                 assignments.push({assignment: item.assignment})
@@ -100,11 +113,11 @@ class App extends React.Component {
     }
 
     getAssignmentsAverage() {
-        const students = this.state.studentData
+        const studentData = this.state.studentData
         let assignments = this.getAssignmentNames()
 
         let assignmentsWithData = assignments.map(a => {
-            let data = students.filter(s => {
+            let data = studentData.filter(s => {
                 return a.assignment === s.assignment
             })
             const count = data.length
@@ -131,11 +144,11 @@ class App extends React.Component {
 
     getAssignmentForStudent(props) {
         const {student} = props
-        const students = this.state.studentData
-        let assignments = this.getAssignmentNames(students)
+        const studentData = this.state.studentData
+        let assignments = this.getAssignmentNames(studentData)
 
         let assignmentsWithData = assignments.map(a => {
-            let data = students.filter(s => {
+            let data = studentData.filter(s => {
                 return (
                     a.assignment === s.assignment &&
                     student === s.username.toLowerCase()
@@ -154,7 +167,7 @@ class App extends React.Component {
         event.preventDefault()
         const student = event.target.value
         this.setState(state => {
-            state.tableView.student = student
+            state.tableView.filterByStudent = student
             return state
         })
     }
@@ -173,10 +186,11 @@ class App extends React.Component {
 
     render() {
         const metadata = this.state.metaData
-        const students = this.state.studentData
-        const tableViewStudent = this.state.tableView.student
+        const studentData = this.state.studentData
+        const filterByStudent = this.state.tableView.filterByStudent
         const difficultyRating = this.state.charts.difficultyRating
         const enjoymentRating = this.state.charts.enjoymentRating
+        const tableView = this.state.tableView
 
         return (
             <Router>
@@ -185,7 +199,7 @@ class App extends React.Component {
                         <Dashboard
                             getStudentNames={this.getStudentNames}
                             metadata={metadata}
-                            students={students}
+                            studentData={studentData}
                             getAssignmentsAverage={this.getAssignmentsAverage}
                             handleChartSwitches={this.handleChartSwitches}
                             difficultyRating={difficultyRating}
@@ -195,9 +209,11 @@ class App extends React.Component {
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
                         <Tableview
                             getStudentNames={this.getStudentNames}
-                            students={students}
+                            studentData={studentData}
                             handleTableviewSelect={this.handleTableviewSelect}
-                            tableViewStudent={tableViewStudent}
+                            filterByStudent={filterByStudent}
+                            handleTableSort={this.handleTableSort}
+                            tableView={tableView}
                         />
                     </Route>
                     <Route
@@ -206,9 +222,11 @@ class App extends React.Component {
                     >
                         <Tableview
                             getStudentNames={this.getStudentNames}
-                            students={students}
+                            studentData={studentData}
                             handleTableviewSelect={this.handleTableviewSelect}
-                            tableViewStudent={tableViewStudent}
+                            filterByStudent={filterByStudent}
+                            handleTableSort={this.handleTableSort}
+                            tableView={tableView}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}/id/:id/username/:username`}>

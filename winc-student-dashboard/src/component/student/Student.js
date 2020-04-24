@@ -39,6 +39,7 @@ const Student = props => {
 
     let urlToStudent = ''
     let urlToTable = ''
+    let studentAvatar = {}
     if (student !== undefined) {
         urlToStudent = (
             <li>
@@ -76,18 +77,14 @@ const Student = props => {
                 </tr>
             )
         } else if (key === 'avatar') {
-            tableData.push(
-                <tr key={keyID}>
-                    <td colSpan='2' className='center'>
-                        <img
-                            className='avatar'
-                            src={`/avatar/${value}`}
-                            width='80'
-                            height='80'
-                            alt={student.name}
-                        />
-                    </td>
-                </tr>
+            studentAvatar = (
+                <img
+                    className='avatar student'
+                    src={`/avatar/${value}`}
+                    width='80'
+                    height='80'
+                    alt={student.name}
+                />
             )
         } else if (key !== 'id') {
             tableData.push(
@@ -109,6 +106,7 @@ const Student = props => {
             />
             <main>
                 <header>
+                    {studentAvatar}
                     <h1>
                         {student.name} {lastName}
                     </h1>

@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom'
 import Nav from '../common/Nav'
 import Footer from '../common/Footer'
 import RenderTable from './RenderTable'
+import Sort from '../utility/Sort'
 
 import {HOME_URL, STORE_LABEL} from '../../Config'
 
@@ -11,16 +12,18 @@ const Tableview = props => {
     const params = useParams()
     const {
         getStudentNames,
-        students,
+        studentData,
         handleTableviewSelect,
-        tableViewStudent
+        filterByStudent,
+        handleTableSort,
+        tableView
     } = props
 
     let student = ''
     let studentNames = getStudentNames()
-    if (tableViewStudent !== '') {
+    if (filterByStudent !== '') {
         student = studentNames.find(student => {
-            return student.username === tableViewStudent.toLowerCase()
+            return student.username === filterByStudent.toLowerCase()
         })
     } else if (params.username !== undefined) {
         student = studentNames.find(student => {
@@ -31,9 +34,15 @@ const Tableview = props => {
         student = studentNames[0]
     }
 
-    let studentData = students.filter(row => {
+    let studentDataFiltered = studentData.filter(row => {
         return student.username === row.username.toLowerCase()
     })
+
+    studentDataFiltered = Sort(
+        studentDataFiltered,
+        tableView.sortOrder,
+        tableView.sortBy
+    )
 
     let urlToStudent = ''
     if (student !== undefined) {
@@ -57,8 +66,9 @@ const Tableview = props => {
                 <RenderTable
                     student={student}
                     studentNames={studentNames}
-                    studentData={studentData}
+                    studentDataFiltered={studentDataFiltered}
                     handleTableviewSelect={handleTableviewSelect}
+                    handleTableSort={handleTableSort}
                 />
             </main>
             <Footer />

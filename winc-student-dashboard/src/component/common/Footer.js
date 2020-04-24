@@ -1,12 +1,26 @@
 import React from 'react'
+import {WINC_URL, WINC_LABEL, DEV_URL, DEV_LABEL} from '../../Config'
 
 const Footer = props => {
     return (
         <footer>
-            © 2020 Winc Academy · Developed by{' '}
-            <a href='https://leon.ist' alt='Leonist'>
-                Leonist
+            Developed for{' '}
+            <a
+                href={WINC_URL}
+                alt={`Link to ${WINC_LABEL}`}
+                rel='noopener nofollow'
+            >
+                {WINC_LABEL}
+            </a>{' '}
+            by{' '}
+            <a
+                href={DEV_URL}
+                alt={`Link to ${DEV_LABEL}`}
+                rel='noopener nofollow'
+            >
+                {DEV_LABEL}
             </a>
+            , © 2020 in infinitum
         </footer>
     )
 }

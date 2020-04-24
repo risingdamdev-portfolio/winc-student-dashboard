@@ -13,7 +13,8 @@ const Student = props => {
         handleChartSwitches,
         getAssignmentForStudent,
         difficultyRating,
-        enjoymentRating
+        enjoymentRating,
+        chartType
     } = props
 
     let studentNames = getStudentNames()
@@ -117,6 +118,7 @@ const Student = props => {
                     enjoymentRating={enjoymentRating}
                     getAssignmentForStudent={getAssignmentForStudent}
                     username={username}
+                    chartType={chartType}
                 />
                 <table>
                     <tbody>{tableData}</tbody>

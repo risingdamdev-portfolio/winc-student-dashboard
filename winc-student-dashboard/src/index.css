@@ -398,7 +398,3 @@ form {
     border-right: 2px solid hsla(0, 0%, 100%, 0.5);
     font-size: inherit;
 }
-
-.filterByStudent:hover {
-    background-color: hsla(45, 100%, 60%, 1);
-}

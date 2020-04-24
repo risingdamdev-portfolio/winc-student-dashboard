@@ -44,6 +44,9 @@ figure {
     margin-bottom: 3rem;
     border-radius: 0.5rem;
     background-color: hsla(210, 0%, 100%, 1);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 th,
@@ -235,6 +238,16 @@ header h1 {
     font-size: 2rem;
     line-height: 2.4rem;
     color: #4d4d4d;
+}
+
+h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #4d4d4d;
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 footer {

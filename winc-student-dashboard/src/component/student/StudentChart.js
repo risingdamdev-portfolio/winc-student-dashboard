@@ -34,6 +34,7 @@ const StudentChart = props => {
     return (
         <React.Fragment>
             <figure>
+                <h2>Student Rating</h2>
                 <button
                     className='difficultyRating'
                     onClick={event => handleChartSwitches(event, true)}

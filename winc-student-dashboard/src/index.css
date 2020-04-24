@@ -293,7 +293,9 @@ footer a:hover {
 .difficultyRating,
 .enjoymentRating,
 .difficultyRating:visited,
-.enjoymentRating:visited {
+.enjoymentRating:visited,
+.chartType,
+.chartType:visited {
     appearance: none;
     border: none;
     background-color: hsla(45, 90%, 50%, 1);
@@ -312,8 +314,13 @@ footer a:hover {
     background-color: hsla(30, 90%, 50%, 1);
 }
 
+.chartType {
+    background-color: hsla(210, 60%, 60%, 1);
+}
+
 .difficultyRating:hover,
-.enjoymentRating:hover {
+.enjoymentRating:hover,
+.chartType:hover {
     text-decoration: none;
     background-color: hsla(45, 100%, 60%, 1);
 }
@@ -322,19 +329,26 @@ footer a:hover {
     background-color: hsla(30, 100%, 60%, 1);
 }
 
+.chartType:hover {
+    background-color: hsla(210, 65%, 65%, 1);
+}
+
 .difficultyRating:focus,
-.enjoymentRating:focus {
+.enjoymentRating:focus,
+.chartType:focus {
     outline: none;
 }
 
 .difficultyRating:active,
-.enjoymentRating:active {
+.enjoymentRating:active,
+.chartType:active {
     position: relative;
     top: 2px;
 }
 
 .difficultyRating span,
-.enjoymentRating span {
+.enjoymentRating span,
+.chartType span {
     font-size: inherit;
     padding-left: 4px;
     border-left: 2px solid hsla(0, 0%, 100%, 0.5);

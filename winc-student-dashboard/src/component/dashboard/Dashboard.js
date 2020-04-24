@@ -21,7 +21,8 @@ const Dashboard = props => {
         getAssignmentsAverage,
         handleChartSwitches,
         difficultyRating,
-        enjoymentRating
+        enjoymentRating,
+        chartType
     } = props
 
     let studentList = Sort(getStudentNames(), true, 'username')
@@ -64,6 +65,7 @@ const Dashboard = props => {
                     handleChartSwitches={handleChartSwitches}
                     difficultyRating={difficultyRating}
                     enjoymentRating={enjoymentRating}
+                    chartType={chartType}
                 />
 
                 <header>

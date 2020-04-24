@@ -26,7 +26,11 @@ class App extends React.Component {
                 sortBy: 'assignment',
                 sortOrder: true
             },
-            charts: {difficultyRating: true, enjoymentRating: true}
+            charts: {
+                difficultyRating: true,
+                enjoymentRating: true,
+                chartType: true
+            }
         }
         this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
         this.handleChartSwitches = this.handleChartSwitches.bind(this)
@@ -172,10 +176,14 @@ class App extends React.Component {
         })
     }
 
-    handleChartSwitches(event, ratingType) {
+    handleChartSwitches(event, chartSwitch) {
         event.preventDefault()
         this.setState(state => {
-            if (ratingType) {
+            if (chartSwitch === '') {
+                state.charts.chartType = !state.charts.chartType
+                return state
+            }
+            if (chartSwitch) {
                 state.charts.difficultyRating = !state.charts.difficultyRating
                 if (
                     state.charts.difficultyRating === false &&
@@ -202,6 +210,7 @@ class App extends React.Component {
         const filterByStudent = this.state.tableView.filterByStudent
         const difficultyRating = this.state.charts.difficultyRating
         const enjoymentRating = this.state.charts.enjoymentRating
+        const chartType = this.state.charts.chartType
         const tableView = this.state.tableView
 
         return (
@@ -216,6 +225,7 @@ class App extends React.Component {
                             handleChartSwitches={this.handleChartSwitches}
                             difficultyRating={difficultyRating}
                             enjoymentRating={enjoymentRating}
+                            chartType={chartType}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
@@ -251,6 +261,7 @@ class App extends React.Component {
                             }
                             difficultyRating={difficultyRating}
                             enjoymentRating={enjoymentRating}
+                            chartType={chartType}
                         />
                     </Route>
                     <Redirect from='/' to={HOME_URL} />

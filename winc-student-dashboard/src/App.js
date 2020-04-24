@@ -30,6 +30,9 @@ class App extends React.Component {
                 difficultyRating: true,
                 enjoymentRating: true,
                 chartType: true
+            },
+            filter: {
+                dashboard: []
             }
         }
         this.handleTableviewSelect = this.handleTableviewSelect.bind(this)
@@ -39,18 +42,19 @@ class App extends React.Component {
         this.getAssignmentNames = this.getAssignmentNames.bind(this)
         this.getStudentNames = this.getStudentNames.bind(this)
         this.handleTableSort = this.handleTableSort.bind(this)
+        this.handleFilterDashboard = this.handleFilterDashboard.bind(this)
+        this.getFilterState = this.getFilterState.bind(this)
     }
 
-    componentDidMount() {
-        // Use static files instead of getApiData for testing
-        // this.getApiData('GET', '/studentData.json').then(data => {
-        //     this.setState({studentData: data})
-        // })
-        // this.getApiData('GET', '/metaData.json').then(data => {
-        //     this.setState({metaData: data})
-        // })
-    }
-
+    // componentDidMount() {
+    // Use static files instead of getApiData for testing
+    // this.getApiData('GET', '/studentData.json').then(data => {
+    //     this.setState({studentData: data})
+    // })
+    // this.getApiData('GET', '/metaData.json').then(data => {
+    //     this.setState({metaData: data})
+    // })
+    // }
     // Use static files instead of getApiData for testing
     // async getApiData(method, api, body) {
     //     try {
@@ -63,6 +67,36 @@ class App extends React.Component {
     //         console.log(error)
     //     }
     // }
+
+    getFilterState(id) {
+        const selfFilter = this.state.filter.dashboard.indexOf(id) > -1
+        let allFilter = false
+        if (
+            this.state.filter.dashboard === [] ||
+            this.state.filter.dashboard.length === this.state.metaData.length
+        ) {
+            allFilter = true
+        }
+        return [selfFilter, allFilter]
+    }
+
+    handleFilterDashboard(event, id) {
+        //console.log(id)
+        event.preventDefault()
+        this.setState(state => {
+            let exists = state.filter.dashboard.find(item => {
+                return id === item
+            })
+            if (exists === undefined) {
+                state.filter.dashboard.push(id)
+            } else {
+                state.filter.dashboard = state.filter.dashboard.filter(item => {
+                    return id !== item
+                })
+            }
+            return state
+        })
+    }
 
     handleTableSort(sortBy) {
         this.setState(state => {
@@ -213,6 +247,8 @@ class App extends React.Component {
         const chartType = this.state.charts.chartType
         const tableView = this.state.tableView
 
+        console.log(this.state.filter.dashboard)
+
         return (
             <Router>
                 <Switch>
@@ -226,6 +262,8 @@ class App extends React.Component {
                             difficultyRating={difficultyRating}
                             enjoymentRating={enjoymentRating}
                             chartType={chartType}
+                            handleFilterDashboard={this.handleFilterDashboard}
+                            getFilterState={this.getFilterState}
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>

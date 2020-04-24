@@ -24,7 +24,7 @@ const Footer = props => {
                 , © 2020 in infinitum
             </span>
             <span>
-                <a href='#' alt={`Back to top`} rel='noopener nofollow'>
+                <a href='#top' alt={`Back to top`} rel='noopener nofollow'>
                     Back to top
                 </a>
             </span>

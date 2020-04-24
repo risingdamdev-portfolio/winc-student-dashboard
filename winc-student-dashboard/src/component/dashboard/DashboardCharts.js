@@ -11,6 +11,18 @@ import {
 
 import wincTheme from '../utility/wincTheme'
 
+/**
+ *
+ *  @param {object} props:
+ *    getAssignmentsAverage: Returns a list of assignments with average ratings
+ *    handleChartSwitches: Callback function for conditional display of charts
+ *    difficultyRating: Boolean for switching difficulty rating
+ *    enjoymentRating: Boolean for switching enjoyment rating
+ *    chartType: Boolean for switching chart type
+ *    getFilterNames: Callback function with active students used in filter
+ *
+ */
+
 const DashboardCharts = props => {
     const {
         getAssignmentsAverage,

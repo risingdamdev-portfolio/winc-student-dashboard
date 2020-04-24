@@ -11,6 +11,18 @@ import {
 
 import wincTheme from '../utility/wincTheme'
 
+/**
+ *
+ *  @param {object} props:
+ *    handleChartSwitches: Callback function for conditional display of charts
+ *    difficultyRating: Boolean for switching difficulty rating
+ *    enjoymentRating: Boolean for switching enjoyment rating
+ *    getAssignmentForStudent: Callback function for ratings for one student
+ *    username: Current username (from URL)
+ *    chartType: Boolean for switching chart type
+ *
+ */
+
 const StudentChart = props => {
     const {
         handleChartSwitches,

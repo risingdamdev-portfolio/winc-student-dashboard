@@ -8,6 +8,18 @@ import Sort from '../utility/Sort'
 
 import {HOME_URL, STORE_LABEL} from '../../Config'
 
+/**
+ *
+ *  @param {object} props:
+ *    getStudentNames: Returns a list of students names with ID and username
+ *    studentData: Sample student data from Winc headquarters
+ *    handleTableviewSelect: Callback function for selecting student dataset
+ *    filterByStudent: Current student selected for display
+ *    handleTableSort: Callback function for sorting table columns
+ *    tableView: Active table sort order and column name
+ *
+ */
+
 const Tableview = props => {
     const params = useParams()
     const {

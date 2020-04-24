@@ -80,7 +80,7 @@ class App extends React.Component {
             }
             return `Filtered rating includes: ${names}`
         }
-        return ''
+        return ' '
     }
 
     getFilterState(id) {

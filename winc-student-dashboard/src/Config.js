@@ -1,12 +1,23 @@
+/**
+ *
+ *  Constants used throughout the App
+ *
+ */
+
 const HOME_URL = '/dashboard/students'
 const HOME_LABEL = 'Dashboard'
+
 const STORE_URL = '/tableview'
 const STORE_LABEL = 'Tableview'
+
 const STUDENTS_LABEL = 'Students'
+
 const LOGO_IMAGE = '/logo.png'
 const LOGO_LABEL = 'Winc Academy Logo'
+
 const WINC_URL = 'https://wincadademy.nl'
 const WINC_LABEL = 'Winc Academy'
+
 const DEV_URL = 'https://leon.ist'
 const DEV_LABEL = 'Leonist'
 

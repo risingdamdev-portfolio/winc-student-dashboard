@@ -10,8 +10,17 @@ import {
     LOGO_LABEL
 } from '../../Config'
 
+/**
+ *
+ *  @param {object} props: Navigation component
+ *  Switches between three variations of <nav>
+ *
+ */
+
 const Nav = props => {
-    switch (props.nav) {
+    const {nav} = props
+
+    switch (nav) {
         case 'DataTable':
             return (
                 <nav>

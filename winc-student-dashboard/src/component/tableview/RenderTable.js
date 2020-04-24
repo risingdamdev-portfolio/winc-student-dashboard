@@ -1,5 +1,18 @@
 import React from 'react'
 
+/**
+ *
+ *  @param {object} props:
+ *    student: Current student selected for display
+ *      From state if available, from URL if available, or first student
+ *    studentNames: Sample student data from Winc headquarters
+ *    studentDataFiltered: Filtered data for current student
+ *    handleTableviewSelect: Callback function for selecting student dataset
+ *    handleTableSort: Callback function for sorting table columns
+ *    tableView: Active table sort order and column name
+ *
+ */
+
 const RenderTable = props => {
     let {
         student,

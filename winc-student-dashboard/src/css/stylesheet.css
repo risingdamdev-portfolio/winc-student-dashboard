@@ -165,6 +165,26 @@ nav img {
     top: 18px;
 }
 
+nav img:hover {
+    cursor: pointer;
+    animation: rotate-and-scale 1s ease-in-out both;
+}
+
+@keyframes rotate-and-scale {
+    0% {
+        -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+        transform: scale(1) rotate3d(1, 1, 0, 0deg);
+    }
+    50% {
+        -webkit-transform: scale(0.5) rotate3d(1, 1, 0, -180deg);
+        transform: scale(0.5) rotate3d(1, 1, 0, -180deg);
+    }
+    100% {
+        -webkit-transform: scale(1) rotate3d(1, 1, 0, -360deg);
+        transform: scale(1) rotate3d(1, 1, 0, -360deg);
+    }
+}
+
 main {
     margin: 3rem 5rem 3rem 5rem;
     color: hsla(210, 0%, 100%, 0.8);
@@ -180,6 +200,10 @@ main ul {
     list-style-type: none;
     display: flex;
     flex-flow: row wrap;
+    box-shadow: 0px 9px 27px hsla(210, 0%, 0%, 0.15);
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 0.5rem;
+    padding: 4rem 2rem 2rem;
 }
 
 main ul li {
@@ -187,7 +211,7 @@ main ul li {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 main ul li a,

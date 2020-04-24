@@ -1,7 +1,13 @@
 import React from 'react'
 import {WINC_URL, WINC_LABEL, DEV_URL, DEV_LABEL} from '../../Config'
 
-const Footer = props => {
+/**
+ *
+ *  Footer component with Back to top link
+ *
+ */
+
+const Footer = () => {
     return (
         <footer>
             <span>

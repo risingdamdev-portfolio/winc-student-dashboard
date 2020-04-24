@@ -14,6 +14,22 @@ import {
     STUDENTS_LABEL
 } from '../../Config'
 
+/**
+ *
+ *  @param {object} props:
+ *    getStudentNames: Returns a list of students names with ID and username
+ *    metadata: Sample metadata from https://www.mockaroo.com/ for 10 students
+ *    getAssignmentsAverage: Returns a list of assignments with average ratings
+ *    handleChartSwitches: Callback function for conditional display of charts
+ *    difficultyRating: Boolean for switching difficulty rating
+ *    enjoymentRating: Boolean for switching enjoyment rating
+ *    chartType: Boolean for switching chart type
+ *    handleFilterDashboard: Callback for conditional display of student data
+ *    getFilterState: Callback function with active filter state
+ *    getFilterNames: Callback function with active students used in filter
+ *
+ */
+
 const Dashboard = props => {
     const {
         getStudentNames,

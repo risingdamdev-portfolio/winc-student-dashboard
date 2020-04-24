@@ -5,6 +5,19 @@ import StudentChart from './StudentChart'
 import Footer from '../common/Footer'
 import {HOME_URL, STORE_URL, STORE_LABEL} from '../../Config'
 
+/**
+ *
+ *  @param {object} props:
+ *    getStudentNames: Returns a list of students names with ID and username
+ *    metadata: Sample metadata from https://www.mockaroo.com/ for 10 students
+ *    handleChartSwitches: Callback function for conditional display of charts
+ *    getAssignmentForStudent: Callback function for ratings for one student
+ *    difficultyRating: Boolean for switching difficulty rating
+ *    enjoymentRating: Boolean for switching enjoyment rating
+ *    chartType: Boolean for switching chart type
+ *
+ */
+
 const Student = props => {
     const {username, id} = useParams()
     const {

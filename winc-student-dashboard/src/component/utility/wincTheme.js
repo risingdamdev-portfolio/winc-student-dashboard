@@ -1,3 +1,9 @@
+/**
+ *
+ *  Theme used for rendering Victory charts
+ *
+ */
+
 const wincTheme = {
     area: {
         style: {

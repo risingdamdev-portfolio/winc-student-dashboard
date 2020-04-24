@@ -52,9 +52,12 @@ const RenderTable = props => {
                                 Username
                                 {tableView.sortBy === 'username' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} />
+                                        <img src={'/sort-asc.svg'} alt='Sort' />
                                     ) : (
-                                        <img src={'/sort-desc.svg'} />
+                                        <img
+                                            src={'/sort-desc.svg'}
+                                            alt='Sort'
+                                        />
                                     )
                                 ) : null}
                             </th>
@@ -62,9 +65,12 @@ const RenderTable = props => {
                                 Assignment
                                 {tableView.sortBy === 'assignment' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} />
+                                        <img src={'/sort-asc.svg'} alt='Sort' />
                                     ) : (
-                                        <img src={'/sort-desc.svg'} />
+                                        <img
+                                            src={'/sort-desc.svg'}
+                                            alt='Sort'
+                                        />
                                     )
                                 ) : null}
                             </th>
@@ -76,9 +82,12 @@ const RenderTable = props => {
                                 Difficulty
                                 {tableView.sortBy === 'difficultyRating' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} />
+                                        <img src={'/sort-asc.svg'} alt='Sort' />
                                     ) : (
-                                        <img src={'/sort-desc.svg'} />
+                                        <img
+                                            src={'/sort-desc.svg'}
+                                            alt='Sort'
+                                        />
                                     )
                                 ) : null}
                             </th>
@@ -90,9 +99,12 @@ const RenderTable = props => {
                                 Enjoyment
                                 {tableView.sortBy === 'enjoymentRating' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} />
+                                        <img src={'/sort-asc.svg'} alt='Sort' />
                                     ) : (
-                                        <img src={'/sort-desc.svg'} />
+                                        <img
+                                            src={'/sort-desc.svg'}
+                                            alt='Sort'
+                                        />
                                     )
                                 ) : null}
                             </th>

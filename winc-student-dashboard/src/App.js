@@ -177,8 +177,20 @@ class App extends React.Component {
         this.setState(state => {
             if (ratingType) {
                 state.charts.difficultyRating = !state.charts.difficultyRating
+                if (
+                    state.charts.difficultyRating === false &&
+                    state.charts.enjoymentRating === false
+                ) {
+                    state.charts.enjoymentRating = true
+                }
             } else {
                 state.charts.enjoymentRating = !state.charts.enjoymentRating
+                if (
+                    state.charts.enjoymentRating === false &&
+                    state.charts.difficultyRating === false
+                ) {
+                    state.charts.difficultyRating = true
+                }
             }
             return state
         })

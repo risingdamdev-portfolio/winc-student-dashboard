@@ -19,19 +19,19 @@ const Tableview = props => {
         tableView
     } = props
 
-    let student = ''
     let studentNames = getStudentNames()
-    if (filterByStudent !== '') {
-        student = studentNames.find(student => {
-            return student.username === filterByStudent.toLowerCase()
-        })
-    } else if (params.username !== undefined) {
+    let student = studentNames[0]
+
+    if (params.username !== undefined) {
         student = studentNames.find(student => {
             return student.username === params.username
         })
     }
-    if (student === undefined) {
-        student = studentNames[0]
+
+    if (filterByStudent !== '') {
+        student = studentNames.find(student => {
+            return student.username === filterByStudent.toLowerCase()
+        })
     }
 
     let studentDataFiltered = studentData.filter(row => {

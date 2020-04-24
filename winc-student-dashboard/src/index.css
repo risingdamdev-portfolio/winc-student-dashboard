@@ -51,6 +51,19 @@ td {
     padding: 0.5rem 1rem;
 }
 
+td a {
+    background-color: hsla(210, 0%, 100%, 1);
+    text-decoration: none;
+    padding: 2px 0.5rem 2px;
+    border-radius: 3px;
+    color: hsla(210, 60%, 50%, 1);
+}
+
+td a:hover {
+    background-color: hsla(210, 60%, 50%, 0.25);
+    color: #3380cc;
+}
+
 tr:nth-child(even) {
     background-color: hsla(210, 60%, 50%, 0.1);
 }

@@ -6,7 +6,8 @@ const RenderTable = props => {
         studentNames,
         studentDataFiltered,
         handleTableviewSelect,
-        handleTableSort
+        handleTableSort,
+        tableView
     } = props
 
     let currentUser = ''
@@ -49,9 +50,23 @@ const RenderTable = props => {
                         <tr>
                             <th onClick={() => handleTableSort('username')}>
                                 Username
+                                {tableView.sortBy === 'username' ? (
+                                    tableView.sortOrder === true ? (
+                                        <img src={'/sort-asc.svg'} />
+                                    ) : (
+                                        <img src={'/sort-desc.svg'} />
+                                    )
+                                ) : null}
                             </th>
                             <th onClick={() => handleTableSort('assignment')}>
                                 Assignment
+                                {tableView.sortBy === 'assignment' ? (
+                                    tableView.sortOrder === true ? (
+                                        <img src={'/sort-asc.svg'} />
+                                    ) : (
+                                        <img src={'/sort-desc.svg'} />
+                                    )
+                                ) : null}
                             </th>
                             <th
                                 onClick={() =>
@@ -59,6 +74,13 @@ const RenderTable = props => {
                                 }
                             >
                                 Difficulty
+                                {tableView.sortBy === 'difficultyRating' ? (
+                                    tableView.sortOrder === true ? (
+                                        <img src={'/sort-asc.svg'} />
+                                    ) : (
+                                        <img src={'/sort-desc.svg'} />
+                                    )
+                                ) : null}
                             </th>
                             <th
                                 onClick={() =>
@@ -66,6 +88,13 @@ const RenderTable = props => {
                                 }
                             >
                                 Enjoyment
+                                {tableView.sortBy === 'enjoymentRating' ? (
+                                    tableView.sortOrder === true ? (
+                                        <img src={'/sort-asc.svg'} />
+                                    ) : (
+                                        <img src={'/sort-desc.svg'} />
+                                    )
+                                ) : null}
                             </th>
                         </tr>
                     </thead>

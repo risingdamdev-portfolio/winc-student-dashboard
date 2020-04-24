@@ -69,6 +69,7 @@ const Tableview = props => {
                     studentDataFiltered={studentDataFiltered}
                     handleTableviewSelect={handleTableviewSelect}
                     handleTableSort={handleTableSort}
+                    tableView={tableView}
                 />
             </main>
             <Footer />

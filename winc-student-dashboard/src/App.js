@@ -24,7 +24,7 @@ class App extends React.Component {
             tableView: {
                 filterByStudent: '',
                 sortBy: 'assignment',
-                sortOrder: 'true'
+                sortOrder: true
             },
             charts: {difficultyRating: true, enjoymentRating: true}
         }

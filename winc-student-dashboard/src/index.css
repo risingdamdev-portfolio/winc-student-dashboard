@@ -40,7 +40,7 @@ body {
 }
 
 figure {
-    box-shadow: 0px 3px 6px hsla(210, 0%, 0%, 0.2);
+    box-shadow: 0px 9px 27px hsla(210, 0%, 0%, 0.2);
     margin-bottom: 3rem;
     border-radius: 0.5rem;
     background-color: hsla(210, 0%, 100%, 1);
@@ -55,6 +55,11 @@ td {
 th {
     text-align: left;
     cursor: pointer;
+}
+
+th img {
+    height: 8px;
+    padding-left: 0.5rem;
 }
 
 th:first-of-type {

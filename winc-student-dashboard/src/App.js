@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import Student from './component/student/Student'
 import Dashboard from './component/dashboard/Dashboard'
-import Tableview from './component/tableview/Tableview'
+import TableView from './component/tableview/TableView'
 import {HOME_URL, STORE_URL} from './Config'
 
 /**
@@ -348,7 +348,7 @@ class App extends React.Component {
                         />
                     </Route>
                     <Route exact path={`${HOME_URL}${STORE_URL}`}>
-                        <Tableview
+                        <TableView
                             filterByStudent={filterByStudent}
                             getStudentNames={this.getStudentNames}
                             handleTableSort={this.handleTableSort}
@@ -361,7 +361,7 @@ class App extends React.Component {
                         exact
                         path={`${HOME_URL}${STORE_URL}/id/:id/username/:username`}
                     >
-                        <Tableview
+                        <TableView
                             filterByStudent={filterByStudent}
                             getStudentNames={this.getStudentNames}
                             handleTableSort={this.handleTableSort}

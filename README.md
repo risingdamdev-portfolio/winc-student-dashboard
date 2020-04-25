@@ -1,4 +1,4 @@
-# Winc Academy · Project Week 6: “Student Dashboard”
+# Winc Academy · Project Week 6: “Winc Student Dashboard”
 
 ## Previews
 

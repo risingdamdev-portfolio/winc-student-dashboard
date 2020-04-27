@@ -12,7 +12,7 @@ const STORE_LABEL = 'Tableview'
 
 const STUDENTS_LABEL = 'Students'
 
-const LOGO_IMAGE = '/logo.png'
+const LOGO_IMAGE = '/image/logo.png'
 const LOGO_LABEL = 'Winc Academy Logo'
 
 const WINC_URL = 'https://wincadademy.nl'

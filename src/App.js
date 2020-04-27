@@ -12,15 +12,6 @@ import {HOME_URL, STORE_URL} from './Config'
 
 /**
  *
- *  Use these static files instead of getApiData for testing
- *
- */
-
-import studentData from './data/studentData.json'
-import metaData from './data/metaData.json'
-
-/**
- *
  *  Main component for the Student Dashboard
  *  State:
  *    studentData: Sample student data from Winc headquarters
@@ -44,8 +35,8 @@ class App extends React.Component {
         super()
 
         this.state = {
-            studentData: studentData,
-            metaData: metaData,
+            studentData: [],
+            metaData: [],
             tableView: {
                 filterByStudent: '',
                 sortBy: 'assignment',
@@ -58,6 +49,10 @@ class App extends React.Component {
             },
             filter: {
                 dashboard: []
+            },
+            loaded: {
+                student: false,
+                meta: false
             }
         }
 
@@ -74,27 +69,36 @@ class App extends React.Component {
         this.getStudentNames = this.getStudentNames.bind(this)
     }
 
-    // Use static files instead of getApiData for testing; switch to API later
+    // Update state with data for students and metadata
+    componentDidMount() {
+        this.getApiData('GET', '/data/studentData.json').then(data => {
+            this.setState(state => {
+                state.studentData = data
+                state.loaded.student = true
+                return state
+            })
+        })
+        this.getApiData('GET', '/data/metaData.json').then(data => {
+            this.setState(state => {
+                state.metaData = data
+                state.loaded.meta = true
+                return state
+            })
+        })
+    }
 
-    // componentDidMount() {
-    // this.getApiData('GET', '/studentData.json').then(data => {
-    //     this.setState({studentData: data})
-    // })
-    // this.getApiData('GET', '/metaData.json').then(data => {
-    //     this.setState({metaData: data})
-    // })
-    // }
-    // async getApiData(method, api, body) {
-    //     try {
-    //         let result = await fetch(api, {
-    //             method: method,
-    //             body: JSON.stringify(body)
-    //         })
-    //         return await result.json()
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
+    // Get data from API
+    async getApiData(method, api, body) {
+        try {
+            let result = await fetch(api, {
+                method: method,
+                body: JSON.stringify(body)
+            })
+            return await result.json()
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // Callback function with active students used in dashboard filter
     getFilterNames() {
@@ -300,6 +304,10 @@ class App extends React.Component {
     }
 
     render() {
+        if (!this.state.loaded.student || !this.state.loaded.meta) {
+            return ''
+        }
+
         const chartType = this.state.charts.chartType
         const difficultyRating = this.state.charts.difficultyRating
         const enjoymentRating = this.state.charts.enjoymentRating

@@ -65,30 +65,36 @@ const RenderTable = props => {
                                 Username
                                 {tableView.sortBy === 'username' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} alt='Sort' />
+                                        <img
+                                            src={'/image/sort-asc.svg'}
+                                            alt='Sort'
+                                        />
                                     ) : (
                                         <img
-                                            src={'/sort-desc.svg'}
+                                            src={'/image/sort-desc.svg'}
                                             alt='Sort'
                                         />
                                     )
                                 ) : (
-                                    <img src={'/sort.png'} alt='Sort' />
+                                    <img src={'/image/sort.png'} alt='Sort' />
                                 )}
                             </th>
                             <th onClick={() => handleTableSort('assignment')}>
                                 Assignment
                                 {tableView.sortBy === 'assignment' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} alt='Sort' />
+                                        <img
+                                            src={'/image/sort-asc.svg'}
+                                            alt='Sort'
+                                        />
                                     ) : (
                                         <img
-                                            src={'/sort-desc.svg'}
+                                            src={'/image/sort-desc.svg'}
                                             alt='Sort'
                                         />
                                     )
                                 ) : (
-                                    <img src={'/sort.png'} alt='Sort' />
+                                    <img src={'/image/sort.png'} alt='Sort' />
                                 )}
                             </th>
                             <th
@@ -99,15 +105,18 @@ const RenderTable = props => {
                                 Difficulty
                                 {tableView.sortBy === 'difficultyRating' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} alt='Sort' />
+                                        <img
+                                            src={'/image/sort-asc.svg'}
+                                            alt='Sort'
+                                        />
                                     ) : (
                                         <img
-                                            src={'/sort-desc.svg'}
+                                            src={'/image/sort-desc.svg'}
                                             alt='Sort'
                                         />
                                     )
                                 ) : (
-                                    <img src={'/sort.png'} alt='Sort' />
+                                    <img src={'/image/sort.png'} alt='Sort' />
                                 )}
                             </th>
                             <th
@@ -118,15 +127,18 @@ const RenderTable = props => {
                                 Enjoyment
                                 {tableView.sortBy === 'enjoymentRating' ? (
                                     tableView.sortOrder === true ? (
-                                        <img src={'/sort-asc.svg'} alt='Sort' />
+                                        <img
+                                            src={'/image/sort-asc.svg'}
+                                            alt='Sort'
+                                        />
                                     ) : (
                                         <img
-                                            src={'/sort-desc.svg'}
+                                            src={'/image/sort-desc.svg'}
                                             alt='Sort'
                                         />
                                     )
                                 ) : (
-                                    <img src={'/sort.png'} alt='Sort' />
+                                    <img src={'/image/sort.png'} alt='Sort' />
                                 )}
                             </th>
                         </tr>

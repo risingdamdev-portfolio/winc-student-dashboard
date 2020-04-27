@@ -447,7 +447,8 @@ form {
 .filterByStudent select {
     appearance: none;
     border: none;
-    background: url('/arrow.svg') no-repeat right center, hsla(45, 90%, 50%, 1);
+    background: url('/image/select.svg') no-repeat right center,
+        hsla(45, 90%, 50%, 1);
     background-size: 16px 12px, auto;
     border-radius: 3px;
     width: auto;

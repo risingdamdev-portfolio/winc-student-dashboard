@@ -1,29 +1,31 @@
-# Winc Academy · Project Week 6: “Winc Student Dashboard”
+# Winc Academy Project: Winc Student Dashboard
+
+Final project week 6
 
 ## Previews
 
 1. Dashboard View: Charts
 
-![Dashboard View](wsd-preview1.png)
+![Dashboard View](winc-student-dashboard/docs/wsd-preview1.png)
 
 2. Dashboard View: Students
 
-![Students View](wsd-preview2.png)
+![Students View](winc-student-dashboard/docs/wsd-preview2.png)
 
 3. Dashboard View: Filter By Student (one or more)
 
-![Filter View](wsd-preview3.png)
+![Filter View](winc-student-dashboard/docs/wsd-preview3.png)
 
 4. Student View
 
-![Student View](wsd-preview4.png)
+![Student View](winc-student-dashboard/docs/wsd-preview4.png)
 
 5. Table View
 
-![Table View](wsd-preview5.png)
+![Table View](winc-student-dashboard/docs/wsd-preview5.png)
 
 
-## Project choices and description (in Dutch):
+## Project Choices and Description (Dutch):
 
 # Projectkeuzes en beschrijving
 

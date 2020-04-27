@@ -1,4 +1,6 @@
-# Winc Academy · Project Week 6: “Winc Student Dashboard”
+# Winc Academy Project: Winc Student Dashboard
+
+Final project week 6
 
 ## Previews
 
@@ -23,7 +25,7 @@
 ![Table View](winc-student-dashboard/docs/wsd-preview5.png)
 
 
-## Project choices and description (in Dutch):
+## Project Choices and Description (Dutch):
 
 # Projectkeuzes en beschrijving
 

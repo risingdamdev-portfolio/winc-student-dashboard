@@ -12,7 +12,7 @@ import {HOME_URL, STORE_URL} from './Config'
 
 /**
  *
- *  Use these static files instead of getApiData for testing
+ *  Use these static files instead of getApiData for testing!
  *
  */
 

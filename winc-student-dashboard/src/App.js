@@ -17,7 +17,7 @@ import {HOME_URL, STORE_URL} from './Config'
  */
 
 import studentData from './data/studentData.json'
-import metaData from './data/metaData.json'
+import metaData from './data/metaDataSource.json'
 
 /**
  *

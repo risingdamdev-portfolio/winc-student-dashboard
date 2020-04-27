@@ -22,6 +22,9 @@ const Footer = () => {
                 </Link>
                 , © 2020 in infinitum
             </span>
+            <span>
+                <Link to='#top'>Back to top</Link>
+            </span>
         </footer>
     )
 }

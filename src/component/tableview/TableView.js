@@ -1,5 +1,5 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 
 import Nav from '../common/Nav'
 import Footer from '../common/Footer'
@@ -61,11 +61,11 @@ const Tableview = props => {
 
     const urlToStudent = (
         <li>
-            <a
-                href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
+            <Link
+                to={`${HOME_URL}/id/${student.id}/username/${student.username}`}
             >
                 {student.name}
-            </a>
+            </Link>
         </li>
     )
 

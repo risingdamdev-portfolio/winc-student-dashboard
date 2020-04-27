@@ -47,12 +47,12 @@ const Student = props => {
 
     const urlToStudent = (
         <li>
-            <a
+            <Link
                 className='active'
-                href={`${HOME_URL}/id/${student.id}/username/${student.username}`}
+                to={`${HOME_URL}/id/${student.id}/username/${student.username}`}
             >
                 {student.name}
-            </a>
+            </Link>
         </li>
     )
     const urlToTable = `${HOME_URL}${STORE_URL}/id/${student.id}/username/${student.username}`
@@ -75,7 +75,7 @@ const Student = props => {
                 <tr key={keyID}>
                     <td>{label}</td>
                     <td>
-                        <a href={`mailto:${value}`}>{value}</a>
+                        <Link to={`mailto:${value}`}>{value}</Link>
                     </td>
                 </tr>
             )

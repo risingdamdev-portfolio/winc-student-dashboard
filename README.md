@@ -4,24 +4,23 @@
 
 1. Dashboard View: Charts
 
-![Dashboard View](wsd-preview1.png)
+![Dashboard View](docs/wsd-preview1.png)
 
 2. Dashboard View: Students
 
-![Students View](wsd-preview2.png)
+![Students View](docs/wsd-preview2.png)
 
 3. Dashboard View: Filter By Student (one or more)
 
-![Filter View](wsd-preview3.png)
+![Filter View](docs/wsd-preview3.png)
 
 4. Student View
 
-![Student View](wsd-preview4.png)
+![Student View](docs/wsd-preview4.png)
 
 5. Table View
 
-![Table View](wsd-preview5.png)
-
+![Table View](docs/wsd-preview5.png)
 
 ## Project choices and description (in Dutch):
 
@@ -51,13 +50,13 @@ De grafieken op het dashboard kunnen nog uitgebreid worden met een selectiemenu 
 
 ## Student component
 
-De pagina voor een student toont dezelfde grafieken als het dashboard, maar dan voor één student. Onder de grafiek vind je de gekoppelde test data. Ook hier is er een link naar de tabel weergave.  Als het dashboard verder wordt ontwikkeld, zou ik meer gegevens willen tonen die voor de student beschikbaar zijn. Een link of koppeling met het studenten profiel op de Winc website bijvoorbeeld.
+De pagina voor een student toont dezelfde grafieken als het dashboard, maar dan voor één student. Onder de grafiek vind je de gekoppelde test data. Ook hier is er een link naar de tabel weergave. Als het dashboard verder wordt ontwikkeld, zou ik meer gegevens willen tonen die voor de student beschikbaar zijn. Een link of koppeling met het studenten profiel op de Winc website bijvoorbeeld.
 
 ## Tabel component
 
 De ruwe data voor het dashboard heb ik ongewijzigd gelaten en wordt in deze pagina in tabelvorm weergegeven. Het sorteren werkt op iedere kolom, waarbij de sortering wordt teruggezet naar oplopend als je een andere kolom selecteert. Sorteren kan oplopend of aflopend.
 
-Omdat het tonen van de gegevens van alle studenten de tabel weergave onoverzichtelijk zou maken, ben ik gestart met een selectiemenu om de tabel te kunnen filteren op één student. Via verschillende links naar deze pagina wordt het filter op voorhand al ingesteld via de state. Het dashboard zou ik verder ontwikkelen door een filter toe te voegen voor een specifieke opdracht, zodat de tabel de gegevens kan weergeven voor alle studenten. Ook zou ik de gegevens in de tabel actief maken, zodat het klikken op de naam van een opdracht het filter voor opdrachten activeert.  Of klikken op een rating een filter voor alle ratings met dezelfde waarde activeert. Een andere weergave zou een tweedimensionale tabel kunnen zijn zoals in een spreadsheet, met studenten in kolommen en opdrachten in rijen.
+Omdat het tonen van de gegevens van alle studenten de tabel weergave onoverzichtelijk zou maken, ben ik gestart met een selectiemenu om de tabel te kunnen filteren op één student. Via verschillende links naar deze pagina wordt het filter op voorhand al ingesteld via de state. Het dashboard zou ik verder ontwikkelen door een filter toe te voegen voor een specifieke opdracht, zodat de tabel de gegevens kan weergeven voor alle studenten. Ook zou ik de gegevens in de tabel actief maken, zodat het klikken op de naam van een opdracht het filter voor opdrachten activeert. Of klikken op een rating een filter voor alle ratings met dezelfde waarde activeert. Een andere weergave zou een tweedimensionale tabel kunnen zijn zoals in een spreadsheet, met studenten in kolommen en opdrachten in rijen.
 
 ## Routing en config
 

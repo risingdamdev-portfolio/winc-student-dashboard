@@ -83,7 +83,7 @@ const Student = props => {
             studentAvatar = (
                 <img
                     className='avatar student'
-                    src={`/avatar/${value}`}
+                    src={`/image/avatar/${value}`}
                     width='80'
                     height='80'
                     alt={student.name}

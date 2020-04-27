@@ -85,7 +85,7 @@ const Dashboard = props => {
                 <Link to={urlToStudent}>
                     <img
                         className='avatar'
-                        src={`/avatar/${studentData.avatar}`}
+                        src={`/image/avatar/${studentData.avatar}`}
                         alt={row.name}
                     />
                     <br />

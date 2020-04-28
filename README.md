@@ -4,6 +4,8 @@ Final project week 6
 
 ## Previews
 
+You can view a live version of the Student Dashboard here: https://wsd-react.leon.ist/
+
 1. Dashboard View: Charts
 
 ![Dashboard View](winc-student-dashboard/docs/wsd-preview1.png)

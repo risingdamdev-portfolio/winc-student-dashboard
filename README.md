@@ -2,6 +2,10 @@
 
 ## Previews
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1dcfce9f-5b38-47f9-b546-82b8b99b6717/deploy-status)](https://app.netlify.com/sites/winc-student-dashboard-leonist/deploys)
+
+You can view a preview version of the student dashboard here: http://winc-student-dashboard.leon.ist
+
 1. Dashboard View: Charts
 
 ![Dashboard View](docs/wsd-preview1.png)

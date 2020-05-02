@@ -4,6 +4,8 @@ Final project week 6
 
 ## Previews
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1dcfce9f-5b38-47f9-b546-82b8b99b6717/deploy-status)](https://app.netlify.com/sites/winc-student-dashboard-leonist/deploys)
+
 You can view a live version of the Student Dashboard here: https://winc-student-dashboard.leon.ist
 
 1. Dashboard View: Charts

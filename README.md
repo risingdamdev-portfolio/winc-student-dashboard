@@ -4,27 +4,27 @@ Final project week 6
 
 ## Previews
 
-You can view a live version of the Student Dashboard here: https://wsd-react.leon.ist/
+You can view a live version of the Student Dashboard here: https://winc-student-dashboard.leon.ist
 
 1. Dashboard View: Charts
 
-![Dashboard View](winc-student-dashboard/docs/wsd-preview1.png)
+![Dashboard View](docs/wsd-preview1.png)
 
 2. Dashboard View: Students
 
-![Students View](winc-student-dashboard/docs/wsd-preview2.png)
+![Students View](docs/wsd-preview2.png)
 
 3. Dashboard View: Filter By Student (one or more)
 
-![Filter View](winc-student-dashboard/docs/wsd-preview3.png)
+![Filter View](docs/wsd-preview3.png)
 
 4. Student View
 
-![Student View](winc-student-dashboard/docs/wsd-preview4.png)
+![Student View](docs/wsd-preview4.png)
 
 5. Table View
 
-![Table View](winc-student-dashboard/docs/wsd-preview5.png)
+![Table View](docs/wsd-preview5.png)
 
 
 ## Project Choices and Description (Dutch):
